@@ -187,7 +187,7 @@ html {
 }
 
 body {
-  background: #ca1a72;
+  background: #0a0e27;
 }
 
 body.is-preload *,
@@ -209,7 +209,7 @@ body,
 input,
 select,
 textarea {
-  color: rgba(255, 255, 255, 0.55);
+  color: #e0e7ff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16.5pt;
   font-weight: normal;
@@ -279,7 +279,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #fdd81d;
+  color: #818cf8;
   font-weight: bold;
   line-height: 1.5;
   margin: 0 0 0.5em 0;
@@ -290,7 +290,7 @@ p.special2 {
 }
 
 p.special3 {
-  color: rgba(0, 0, 0);
+  color: #e9d5ff;
 }
 
 h1 a,
@@ -314,10 +314,10 @@ h1.major {
 }
 
 h1.major:after {
-  background-image: -moz-linear-gradient(to right, #000000, #b74e91);
-  background-image: -webkit-linear-gradient(to right, #000000, #b74e91);
-  background-image: -ms-linear-gradient(to right, #000000, #b74e91);
-  background-image: linear-gradient(to right, #000000, #b74e91);
+  background-image: -moz-linear-gradient(to right, #6366f1, #ec4899);
+  background-image: -webkit-linear-gradient(to right, #6366f1, #ec4899);
+  background-image: -ms-linear-gradient(to right, #6366f1, #ec4899);
+  background-image: linear-gradient(to right, #6366f1, #ec4899);
   -moz-transition: max-width 0.2s ease;
   -webkit-transition: max-width 0.2s ease;
   -ms-transition: max-width 0.2s ease;
@@ -335,7 +335,7 @@ h2 {
   font-size: 1.75em;
 }
 h2.altH2 {
-  color: #000000;
+  color: #fce7f3;
 }
 
 h3 {
@@ -2463,7 +2463,7 @@ select {
 
 select option {
   color: #ffffff;
-  background: #312450;
+  background: #1e1b4b;
 }
 
 select:focus::-ms-value {
@@ -2549,9 +2549,9 @@ input[type="radio"] + label:before {
 
 input[type="checkbox"]:checked + label:before,
 input[type="radio"]:checked + label:before {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: #b74e91;
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #ffffff;
   content: "\f00c";
 }
 
@@ -2630,9 +2630,9 @@ input[type="radio"] + label:before {
   width: 2.5em;
   height: 2.5em;
   display: block;
-  background: #ffffff;
+  background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
   border-radius: 100%;
-  color: #312450;
+  color: #ffffff;
   text-align: center;
   line-height: 2.5em;
   margin: 0 0 1.3em 0;
@@ -2643,27 +2643,27 @@ input[type="radio"] + label:before {
 }
 
 .wrapper.style1 .icon.major:before {
-  color: #5e42a6;
+  color: #ffffff;
 }
 
 .wrapper.style1-alt .icon.major:before {
-  color: #493382;
+  color: #ffffff;
 }
 
 .wrapper.style2 .icon.major:before {
-  color: #5052b5;
+  color: #ffffff;
 }
 
 .wrapper.style2-alt .icon.major:before {
-  color: #3e4094;
+  color: #ffffff;
 }
 
 .wrapper.style3 .icon.major:before {
-  color: #b74e91;
+  color: #ffffff;
 }
 
 .wrapper.style3-alt .icon.major:before {
-  color: #953d75;
+  color: #ffffff;
 }
 
 /* Image */
@@ -3106,17 +3106,32 @@ body.is-ie .spotlights > section {
 }
 
 .spotlights > section > .image {
-  background-position: center center;
-  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  background: rgba(99, 102, 241, 0.1);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 0;
-  display: block;
   position: relative;
   width: 25em;
 }
 
 .spotlights > section > .image img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   border-radius: 0;
   display: block;
+  filter: drop-shadow(0 10px 30px rgba(99, 102, 241, 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.spotlights > section > .image img:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 15px 40px rgba(236, 72, 153, 0.6));
 }
 
 .spotlights > section > .image:before {
@@ -3124,7 +3139,7 @@ body.is-ie .spotlights > section {
   -webkit-transition: opacity 1s ease;
   -ms-transition: opacity 1s ease;
   transition: opacity 1s ease;
-  background: rgba(49, 36, 80, 0.9);
+  background: rgba(30, 27, 75, 0.9);
   content: "";
   display: block;
   height: 100%;
@@ -3326,46 +3341,46 @@ table.alt tfoot {
 }
 
 .wrapper.alt {
-  background-color: #261c3e;
+  background-color: #1e1b4b;
 }
 
 .wrapper.style1 {
-  background-color: #ca1a72;
+  background-color: #1e1b4b;
 }
 
 .wrapper.style1-alt {
-  background-color: #ca1a72;
+  background-color: #1e1b4b;
 }
 
 .wrapper.style2 {
-  background-color: #5052b5;
+  background-color: #312e81;
 }
 
 section.styleA {
-  background-color: #000000;
+  background-color: #1e1b4b;
 }
 
 section.styleB {
-  background-color: #ffffff;
+  background-color: #4c1d95;
 }
 section.styleC {
-  background-color: #0ef3ff;
+  background-color: #dbeafe;
 }
 
 section.styleD {
-  background-color: #f8d84f;
+  background-color: #831843;
 }
 
 .wrapper.style2-alt {
-  background-color: #3e4094;
+  background-color: #3730a3;
 }
 
 .wrapper.style3 {
-  background-color: #ca1a72;
+  background-color: #1e1b4b;
 }
 
 .wrapper.style3-alt {
-  background-color: #953d75;
+  background-color: #312e81;
 }
 
 .wrapper.fullscreen {
@@ -3471,7 +3486,7 @@ body.is-preload .wrapper.fade > .inner {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  background-color: #5e42a6;
+  background-color: #1e1b4b;
   cursor: default;
   padding: 1.75em 2em;
 }
@@ -3616,7 +3631,7 @@ body.is-preload .wrapper.fade > .inner {
 
 #sidebar {
   padding: 2.5em 2.5em 0.5em 2.5em;
-  background: #ca1a72;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
   cursor: default;
   height: 100vh;
   left: 0;
@@ -3858,7 +3873,7 @@ body.is-ie #sidebar > .inner {
 }
 
 #sidebar nav a:after {
-  background-color: #fdd81d;
+  background-color: #818cf8;
   -moz-transition: max-width 0.2s ease;
   -webkit-transition: max-width 0.2s ease;
   -ms-transition: max-width 0.2s ease;
@@ -3871,7 +3886,7 @@ body.is-ie #sidebar > .inner {
 }
 
 #sidebar nav a.active {
-  color: #fdd81d;
+  color: #818cf8;
 }
 
 #sidebar nav a.active:after {
@@ -3946,7 +3961,7 @@ body.is-preload #sidebar nav ul li {
 
   #sidebar nav a:after {
     background-image: none;
-    background-color: #fdd81d;
+    background-color: #818cf8;
   }
 }
 
@@ -3985,5 +4000,121 @@ body.is-preload #sidebar nav ul li {
 @media screen and (max-width: 1280px) {
   #intro {
     background-attachment: scroll;
+  }
+}
+
+
+/* Enhanced Responsive & Image Styling */
+.spotlights > section > .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.spotlights > section > .image img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(99, 102, 241, 0.5));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.spotlights > section > .image img:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 15px 40px rgba(236, 72, 153, 0.6));
+}
+
+@media screen and (max-width: 980px) {
+  .spotlights > section > .image {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    padding: 3em;
+  }
+  
+  .spotlights > section > .image img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .spotlights > section > .image {
+    min-height: 150px;
+    padding: 2em;
+  }
+  
+  .spotlights > section > .image img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .wrapper > .inner {
+    padding: 2em 1.5em 1em 1.5em;
+  }
+  
+  .features section {
+    padding: 2em 1em 0.5em 5em;
+  }
+  
+  h1 {
+    font-size: 1.75em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .spotlights > section > .image {
+    min-height: 120px;
+    padding: 1.5em;
+  }
+  
+  .spotlights > section > .image img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .split > * {
+    padding: 2em 0 0 0;
+  }
+  
+  .contact li {
+    margin: 1em 0;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  h2 {
+    font-size: 1.25em;
+  }
+  
+  h3 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  body, input, select, textarea {
+    font-size: 10pt;
+  }
+  
+  .wrapper > .inner {
+    padding: 1.5em 1em 0.5em 1em;
+  }
+  
+  .features section {
+    padding: 1.5em 0.5em 0.5em 4em;
+  }
+  
+  .spotlights > section > .image img {
+    width: 50px;
+    height: 50px;
   }
 }

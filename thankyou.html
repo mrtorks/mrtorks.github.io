@@ -48,7 +48,7 @@
 	<footer id="footer" class="wrapper style1-alt">
 		<div class="inner">
 			<ul class="menu">
-				<li>&copy; 2021. All rights reserved.</li>
+				<li>&copy; <span id="currentYear"></span>. All rights reserved.</li>
 				<li>Designed by: <a href="https://twitter.com/ajlkn">@ajlkn.</a> Modified by <a
 						href="https://twitter.com/mrtorks">@mrtorks</a>
 				</li>
@@ -65,6 +65,7 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/redirect.js"></script>
+	<script>$('#currentYear').text(new Date().getFullYear());</script>
 
 </body>
 

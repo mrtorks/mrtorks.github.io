@@ -11,7 +11,7 @@ body {
 .btn {
   border-radius: 2px;
   padding: 8px 12px;
-  color: #f8d84f;
+  color: #818cf8;
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -20,7 +20,7 @@ body {
 }
 
 .card {
-  background: #ca1a72;
+  background: #1e1b4b;
   max-width: 400px;
   margin: 100px auto;
   border-radius: 12px;
@@ -55,7 +55,7 @@ body {
 
 .title {
   margin: 0 0 12px;
-  color: #f8d84f;
+  color: #818cf8;
   font-size: 24px;
   transition: 0.5s ease;
 }
