@@ -1,43 +1,22 @@
-/*
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/* Noscript fallback — ensure all sections are visible */
+.wrapper.fade-up > .inner,
+.wrapper.fade-up.inactive > .inner,
+.spotlight-item > .content > .inner,
+.spotlight-item.inactive > .content > .inner,
+.features.inactive section .icon {
+  opacity: 1 !important;
+  transform: none !important;
+}
 
-/* Spotlights */
+.title-line,
+.intro-eyebrow,
+.intro-sub,
+.intro-actions,
+.intro-scroll-hint {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
 
-	.spotlights > section > .image:before {
-		opacity: 0 !important;
-	}
-
-	.spotlights > section > .content > .inner {
-		-moz-transform: none !important;
-		-webkit-transform: none !important;
-		-ms-transform: none !important;
-		transform: none !important;
-		opacity: 1 !important;
-	}
-
-/* Wrapper */
-
-	.wrapper > .inner {
-		opacity: 1 !important;
-		-moz-transform: none !important;
-		-webkit-transform: none !important;
-		-ms-transform: none !important;
-		transform: none !important;
-	}
-
-/* Sidebar */
-
-	#sidebar > .inner {
-		opacity: 1 !important;
-	}
-
-	#sidebar nav > ul > li {
-		-moz-transform: none !important;
-		-webkit-transform: none !important;
-		-ms-transform: none !important;
-		transform: none !important;
-		opacity: 1 !important;
-	}
+#cursor-dot,
+#cursor-ring { display: none; }

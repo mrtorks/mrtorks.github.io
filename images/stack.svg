@@ -1,4 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-stack" viewBox="0 -2 14 20">
-  <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
-  <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Background glow -->
+  <circle cx="40" cy="40" r="38" fill="url(#stackGlow)" opacity="0.15"/>
+  <!-- Bottom layer -->
+  <path d="M12 50 L40 64 L68 50 L40 36 Z" fill="url(#stackLayerC)" opacity="0.5"/>
+  <!-- Middle layer -->
+  <path d="M12 40 L40 54 L68 40 L40 26 Z" fill="url(#stackLayerB)" opacity="0.75"/>
+  <!-- Top layer -->
+  <path d="M12 30 L40 44 L68 30 L40 16 Z" fill="url(#stackLayerA)"/>
+  <!-- Edge highlights -->
+  <path d="M12 30 L40 44 L68 30" stroke="url(#stackStroke)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/>
+  <defs>
+    <linearGradient id="stackLayerA" x1="12" y1="30" x2="68" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="stackLayerB" x1="12" y1="40" x2="68" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="stackLayerC" x1="12" y1="50" x2="68" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a5b4fc"/>
+      <stop offset="100%" stop-color="#a5f3fc"/>
+    </linearGradient>
+    <linearGradient id="stackStroke" x1="12" y1="30" x2="68" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#67e8f9"/>
+    </linearGradient>
+    <radialGradient id="stackGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
 </svg>

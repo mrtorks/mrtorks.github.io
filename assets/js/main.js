@@ -1,190 +1,180 @@
-/*
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/*!
+ * Portfolio — James Delali Torkornoo
+ * Main JS: cursor, theme, scroll animations, nav
+ */
 
-(function($) {
+(function () {
+  'use strict';
 
-	var	$window = $(window),
-		$body = $('body'),
-		$sidebar = $('#sidebar');
+  /* ── Helpers ── */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  const html = document.documentElement;
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ null,      '480px'  ]
-		});
+  /* ══════════════════════════════════════════════
+     1. PRELOAD REMOVAL
+  ══════════════════════════════════════════════ */
+  window.addEventListener('load', () => {
+    setTimeout(() => document.body.classList.remove('is-preload'), 120);
+  });
 
-	// Hack: Enable IE flexbox workarounds.
-		if (browser.name == 'ie')
-			$body.addClass('is-ie');
+  /* ══════════════════════════════════════════════
+     2. CUSTOM CURSOR
+  ══════════════════════════════════════════════ */
+  const dot  = $('#cursor-dot');
+  const ring = $('#cursor-ring');
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  if (dot && ring && window.matchMedia('(hover: hover)').matches) {
+    let mx = -100, my = -100;
+    let rx = -100, ry = -100;
+    let raf;
 
-	// Forms.
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
+    });
 
-		// Hack: Activate non-input submits.
-			$('form').on('click', '.submit', function(event) {
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      raf = requestAnimationFrame(animateRing);
+    }
+    animateRing();
 
-				// Stop propagation, default.
-					event.stopPropagation();
-					event.preventDefault();
+    /* Hover state on interactive elements */
+    const hoverTargets = 'a, button, [role="button"], input, textarea, select, label, .nav-link, .btn-primary, .btn-ghost';
+    document.addEventListener('mouseover', e => {
+      if (e.target.closest(hoverTargets)) document.body.classList.add('cursor-hover');
+    });
+    document.addEventListener('mouseout', e => {
+      if (e.target.closest(hoverTargets)) document.body.classList.remove('cursor-hover');
+    });
 
-				// Submit form.
-					$(this).parents('form').submit();
+    document.addEventListener('mouseleave', () => {
+      dot.style.opacity  = '0';
+      ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      dot.style.opacity  = '';
+      ring.style.opacity = '';
+    });
+  }
 
-			});
+  /* ══════════════════════════════════════════════
+     3. THEME TOGGLE
+  ══════════════════════════════════════════════ */
+  const themeBtn = $('#theme-toggle');
+  const THEME_KEY = 'jdt-theme';
 
-	// Sidebar.
-		if ($sidebar.length > 0) {
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
+  }
 
-			var $sidebar_a = $sidebar.find('a');
+  /* Respect system preference on first visit */
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved) {
+    applyTheme(saved);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(prefersDark ? 'dark' : 'light');
+  }
 
-			$sidebar_a
-				.addClass('scrolly')
-				.on('click', function() {
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  }
 
-					var $this = $(this);
+  /* ══════════════════════════════════════════════
+     4. ACTIVE NAV LINK (IntersectionObserver)
+  ══════════════════════════════════════════════ */
+  const sections = $$('section[id], div[id]').filter(el =>
+    ['intro','one','two','four'].includes(el.id)
+  );
+  const navLinks = $$('.nav-link');
 
-					// External link? Bail.
-						if ($this.attr('href').charAt(0) != '#')
-							return;
+  if ('IntersectionObserver' in window && sections.length) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const active = navLinks.find(a => a.getAttribute('href') === '#' + entry.target.id);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
 
-					// Deactivate all links.
-						$sidebar_a.removeClass('active');
+    sections.forEach(s => io.observe(s));
+  }
 
-					// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
-						$this
-							.addClass('active')
-							.addClass('active-locked');
+  /* ══════════════════════════════════════════════
+     5. SMOOTH SCROLL (native + polyfill)
+  ══════════════════════════════════════════════ */
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    const target = document.getElementById(link.getAttribute('href').slice(1));
+    if (!target) return;
+    e.preventDefault();
 
-				})
-				.each(function() {
+    const topbarH = window.innerWidth <= 1280 ? 56 : 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - topbarH;
 
-					var	$this = $(this),
-						id = $this.attr('href'),
-						$section = $(id);
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
 
-					// No section for this link? Bail.
-						if ($section.length < 1)
-							return;
+  /* ══════════════════════════════════════════════
+     6. SCROLL REVEAL (fade-up wrappers + spotlights + features)
+  ══════════════════════════════════════════════ */
+  function revealOnScroll() {
+    const revealTargets = [
+      ...$$('.wrapper.fade-up'),
+      ...$$('.spotlight-item'),
+      ...$$('.features'),
+    ];
 
-					// Scrollex.
-						$section.scrollex({
-							mode: 'middle',
-							top: '-20vh',
-							bottom: '-20vh',
-							initialize: function() {
+    if (!('IntersectionObserver' in window)) {
+      revealTargets.forEach(el => el.classList.remove('inactive'));
+      return;
+    }
 
-								// Deactivate section.
-									$section.addClass('inactive');
+    const revealIO = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('inactive');
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-							},
-							enter: function() {
+    revealTargets.forEach(el => {
+      el.classList.add('inactive');
+      revealIO.observe(el);
+    });
+  }
 
-								// Activate section.
-									$section.removeClass('inactive');
+  revealOnScroll();
 
-								// No locked links? Deactivate all links and activate this section's one.
-									if ($sidebar_a.filter('.active-locked').length == 0) {
+  /* ══════════════════════════════════════════════
+     7. FOOTER YEAR
+  ══════════════════════════════════════════════ */
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-										$sidebar_a.removeClass('active');
-										$this.addClass('active');
+  /* ══════════════════════════════════════════════
+     8. MOBILE NAV TOGGLE (≤736px)
+  ══════════════════════════════════════════════ */
+  // Nav is hidden on mobile via CSS; sidebar brand acts as anchor back to top
+  const brand = $('.sidebar-brand');
+  if (brand) {
+    brand.style.cursor = 'pointer';
+    brand.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
-									}
-
-								// Otherwise, if this section's link is the one that's locked, unlock it.
-									else if ($this.hasClass('active-locked'))
-										$this.removeClass('active-locked');
-
-							}
-						});
-
-				});
-
-		}
-
-	// Scrolly.
-		$('.scrolly').scrolly({
-			speed: 1000,
-			offset: function() {
-
-				// If <=large, >small, and sidebar is present, use its height as the offset.
-					if (breakpoints.active('<=large')
-					&&	!breakpoints.active('<=small')
-					&&	$sidebar.length > 0)
-						return $sidebar.height();
-
-				return 0;
-
-			}
-		});
-
-	// Spotlights.
-		$('.spotlights > section')
-			.scrollex({
-				mode: 'middle',
-				top: '-10vh',
-				bottom: '-10vh',
-				initialize: function() {
-
-					// Deactivate section.
-						$(this).addClass('inactive');
-
-				},
-				enter: function() {
-
-					// Activate section.
-						$(this).removeClass('inactive');
-
-				}
-			})
-			.each(function() {
-
-				var	$this = $(this),
-					$image = $this.find('.image'),
-					$img = $image.find('img'),
-					x;
-
-				// Assign image.
-					$image.css('background-image', 'url(' + $img.attr('src') + ')');
-
-				// Set background position.
-					if (x = $img.data('position'))
-						$image.css('background-position', x);
-
-				// Hide <img>.
-					$img.hide();
-
-			});
-
-	// Features.
-		$('.features')
-			.scrollex({
-				mode: 'middle',
-				top: '-20vh',
-				bottom: '-20vh',
-				initialize: function() {
-
-					// Deactivate section.
-						$(this).addClass('inactive');
-
-				},
-				enter: function() {
-
-					// Activate section.
-						$(this).removeClass('inactive');
-
-				}
-			});
-
-})(jQuery);
+})();

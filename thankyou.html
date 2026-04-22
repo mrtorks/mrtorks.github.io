@@ -1,72 +1,110 @@
 <!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html lang="en" data-theme="dark">
 
 <head>
-	<title>Thank You!!</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<title>Message Received — James Torkornoo</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
+	<link rel="stylesheet" href="assets/css/thankyou.css" />
+
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 
-<body class="is-preload">
+<body class="is-preload ty-page">
 
-	<!-- Header -->
-	<!--<header id="header">
-		<a href="index.html" class="title"></a>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-			</ul>
-		</nav>
-	</header>-->
+	<!-- Cursor -->
+	<div id="cursor-dot"></div>
+	<div id="cursor-ring"></div>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
-
-		<!-- Main -->
-		<section id="main" class="wrapper">
-			<div class="inner">
-				<h1 class="major">Thank You</h1>
-				<p class="special2">Your message has been received and I would get back you you ASAP!</p>
-				<p class="special2">Sincerely yours, James Torkornoo.</p>
-				<br><br>
-				<p class="special2">You would be redirected back to the homepage in 10 secs.</p>
-			</div>
-		</section>
-
+	<!-- Mesh background -->
+	<div class="mesh-bg" aria-hidden="true">
+		<div class="mesh-orb orb-1"></div>
+		<div class="mesh-orb orb-2"></div>
+		<div class="mesh-orb orb-3"></div>
+		<div class="grid-overlay"></div>
 	</div>
 
-	<!-- Footer -->
-	<footer id="footer" class="wrapper style1-alt">
-		<div class="inner">
-			<ul class="menu">
-				<li>&copy; <span id="currentYear"></span>. All rights reserved.</li>
-				<li>Designed by: <a href="https://twitter.com/ajlkn">@ajlkn.</a> Modified by <a
-						href="https://twitter.com/mrtorks">@mrtorks</a>
-				</li>
-			</ul>
+	<!-- Card -->
+	<main class="ty-stage">
+		<div class="ty-card">
+
+			<div class="ty-icon-wrap" aria-hidden="true">
+				<div class="ty-icon-ring"></div>
+				<i class="fas fa-check"></i>
+			</div>
+
+			<span class="section-tag">Message received</span>
+
+			<h1 class="ty-heading">
+				<span class="ty-line">Thank</span>
+				<span class="ty-line accent-gradient">You.</span>
+			</h1>
+
+			<p class="ty-body">
+				Your message landed safely in my inbox. I'll get back to you as soon as possible — usually within 24 hours.
+			</p>
+
+			<p class="ty-sig">— James Torkornoo</p>
+
+			<div class="ty-redirect">
+				<span class="ty-redirect-label">Redirecting to homepage in</span>
+				<span class="ty-countdown" id="countdown">10</span>
+				<div class="ty-progress-track" aria-hidden="true">
+					<div class="ty-progress-bar" id="progressBar"></div>
+				</div>
+			</div>
+
+			<a href="index.html" class="btn-primary ty-btn">
+				<i class="fas fa-arrow-left"></i> Back to portfolio
+			</a>
+
 		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer id="footer" class="ty-footer">
+		<ul class="menu">
+			<li>&copy; <span id="currentYear"></span> James Delali Torkornoo. All rights reserved.</li>
+			<li>Design by <a href="https://twitter.com/mrtorks" target="_blank" rel="noopener">@mrtorks</a></li>
+		</ul>
 	</footer>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/redirect.js"></script>
-	<script>$('#currentYear').text(new Date().getFullYear());</script>
+	<script src="assets/js/main.js" defer></script>
+	<script>
+		// Countdown + redirect
+		(function () {
+			const DURATION = 10;
+			const countEl = document.getElementById('countdown');
+			const barEl    = document.getElementById('progressBar');
+			let remaining  = DURATION;
+
+			// Animate progress bar via CSS transition
+			requestAnimationFrame(() => {
+				barEl.style.transition = `width ${DURATION}s linear`;
+				barEl.style.width = '0%';
+			});
+
+			const tick = setInterval(() => {
+				remaining--;
+				if (countEl) countEl.textContent = remaining;
+				if (remaining <= 0) {
+					clearInterval(tick);
+					window.location.href = 'index.html';
+				}
+			}, 1000);
+		})();
+	</script>
 
 </body>
-
 </html>

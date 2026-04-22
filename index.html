@@ -1,42 +1,57 @@
 <!DOCTYPE HTML>
-
-<html>
+<html lang="en" data-theme="dark">
 
 <head>
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
-	<title>JAMES DELALI TORKORNOO</title>
+	<title>James Delali Torkornoo — UI/UX & Full Stack</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Senior UI/UX Designer & Full Stack Developer — crafting digital experiences that matter." />
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/card.css" />
 
-
-
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-
-	</noscript>
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 
 <body class="is-preload">
 
+	<!-- Cursor -->
+	<div id="cursor-dot"></div>
+	<div id="cursor-ring"></div>
+
 	<!-- Sidebar -->
 	<section id="sidebar">
 		<div class="inner">
+			<div class="sidebar-brand">
+				<span class="brand-initials">JDT</span>
+				<span class="brand-dot"></span>
+			</div>
 			<nav>
 				<ul>
-					<li><a href="#intro">Welcome</a></li>
-					<li><a href="#one">Who am I</a></li>
-					<li><a href="#two">What I do</a></li>
-					<!--<li><a href="#three">My Work</a></li>-->
-					<li><a href="#four">Get in touch</a></li>
-
+					<li><a href="#intro" class="nav-link"><span class="nav-num">01</span><span class="nav-label">Home</span></a></li>
+					<li><a href="#one" class="nav-link"><span class="nav-num">02</span><span class="nav-label">About</span></a></li>
+					<li><a href="#two" class="nav-link"><span class="nav-num">03</span><span class="nav-label">Expertise</span></a></li>
+					<li><a href="#four" class="nav-link"><span class="nav-num">04</span><span class="nav-label">Contact</span></a></li>
 				</ul>
 			</nav>
+			<div class="sidebar-footer">
+				<button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+					<span class="theme-icon-dark"><i class="fas fa-moon"></i> Dark</span>
+					<span class="theme-icon-light"><i class="fas fa-sun"></i> Light</span>
+				</button>
+				<div class="sidebar-social">
+					<a href="https://twitter.com/mrtorks" target="_blank" rel="noopener" aria-label="Twitter / X"><i class="fab fa-twitter"></i></a>
+					<a href="mailto:torkorno@icloud.com" aria-label="Email"><i class="fas fa-envelope-open-text"></i></a>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -44,194 +59,151 @@
 	<div id="wrapper">
 
 		<!-- Intro -->
-		<section id="intro" class="wrapper style1 fullscreen fade-up">
-			<div class="inner">
-				<h1 class="special">mrtorks.github.io</h1>
-				<p class="special2">Hello and welcome.<br />
-					Enjoy the tour!</p>
-
+		<section id="intro" class="wrapper fullscreen fade-up">
+			<div class="mesh-bg" aria-hidden="true">
+				<div class="mesh-orb orb-1"></div>
+				<div class="mesh-orb orb-2"></div>
+				<div class="mesh-orb orb-3"></div>
+				<div class="grid-overlay"></div>
+			</div>
+			<div class="inner intro-inner">
+				<div class="intro-eyebrow">
+					<span class="eyebrow-line"></span>
+					<span>Designer,Manager,Developer</span>
+				</div>
+				<h1 class="intro-title">
+					<span class="title-line">James</span>
+					<span class="title-line accent-gradient">Delali</span>
+					<span class="title-line">Torkornoo</span>
+				</h1>
+				<p class="intro-sub">Crafting interfaces that feel inevitable.<br>7+ years turning complex problems into elegant digital experiences.</p>
+				<div class="intro-actions">
+					<a href="#four" class="btn-primary">Let's talk <i class="fas fa-arrow-right"></i></a>
+					<a href="#one" class="btn-ghost">Explore work</a>
+				</div>
+				<div class="intro-scroll-hint" aria-hidden="true">
+					<span class="scroll-line"></span>
+					<span class="scroll-text">scroll</span>
+				</div>
 			</div>
 		</section>
 
-		<!-- One -->
+		<!-- About -->
 		<section id="one" class="wrapper style2 spotlights">
-			<section class="styleA">
-				<div class="content">
-					<div class="inner">
-						<h2>Bio</h2>
-						<p class="special2">Computer Science Professional with 7+ years of experience in developing full
-							stack web application solutions for diverse industry clients.</p>
-
-					</div>
+			<section class="spotlight-item">
+				<div class="spotlight-icon-wrap" aria-hidden="true">
+					<div class="spotlight-icon-bg"></div>
+					<img src="images/stack.svg" alt="" />
 				</div>
-				<a href="#" class="image"><img src="images/stack.svg" alt="Bootstrap" width="32" height="32" /></a>
-			</section>
-			<section class="styleB">
-				<a href="#" class="image"><img src="images/sliders.svg" alt="" data-position="top center" /></a>
 				<div class="content">
 					<div class="inner">
-						<h2>Preferences</h2>
-						<p class="special3">Podcasts,Soccer, Mechanical Stuff or Coding. On a daily basis you are
-							guaranteed to find me doing any one of these.</p>
-
+						<span class="section-tag">Background</span>
+						<h2>Engineered for depth.</h2>
+						<p>Computer Science professional with 7+ years building full-stack web solutions across diverse industries. I bridge the gap between pixel-perfect design and production-grade code.</p>
 					</div>
 				</div>
 			</section>
-			<section class="styleD">
+			<section class="spotlight-item spotlight-item--alt">
 				<div class="content">
 					<div class="inner">
-						<h2 class="altH2">State of Affairs</h2>
-						<p class="special2">Proactively seeking opportunities to engineer solutions to real life
-							problems and constantly gaining knowledge about developments in the tech world.
-						</p>
-
+						<span class="section-tag">Off the clock</span>
+						<h2>Wired for curiosity.</h2>
+						<p>Podcasts, football, mechanical keyboards, and late-night coding sessions. On any given day you'll find me deep in one of these — usually all four at once.</p>
 					</div>
 				</div>
-				<a href="#" class="image"><img src="images/stopwatch-fill.svg" alt="" data-position="25% 25%" /></a>
+				<div class="spotlight-icon-wrap" aria-hidden="true">
+					<div class="spotlight-icon-bg"></div>
+					<img src="images/sliders.svg" alt="" />
+				</div>
+			</section>
+			<section class="spotlight-item">
+				<div class="spotlight-icon-wrap" aria-hidden="true">
+					<div class="spotlight-icon-bg"></div>
+					<img src="images/stopwatch-fill.svg" alt="" />
+				</div>
+				<div class="content">
+					<div class="inner">
+						<span class="section-tag">Right now</span>
+						<h2>Always in motion.</h2>
+						<p>Actively seeking opportunities to engineer solutions to real-world problems while staying sharp on the latest developments in design systems, AI tooling, and the web platform.</p>
+					</div>
+				</div>
 			</section>
 		</section>
 
-		<!-- Two -->
+		<!-- Expertise -->
 		<section id="two" class="wrapper style3 fade-up">
 			<div class="inner">
-				<h2>What I do</h2>
-				<br>
+				<div class="section-header">
+					<span class="section-tag">Capabilities</span>
+					<h2>What I bring to the table.</h2>
+					<p class="section-sub">A full-spectrum toolkit — from wireframe to deployment.</p>
+				</div>
 				<div class="features">
 					<section>
-						<span class="icon solid major fa-code"></span>
+						<span class="icon solid major fa-object-group"></span>
+						<h3>UI/UX Design</h3>
+						<p>Interaction design, prototyping, and user research that converts.</p>
+					</section>
+					<section>
+						<span class="icon solid major fa-terminal"></span>
 						<h3>Frontend Development</h3>
-						<p>Developing UI/UX interfaces using a combination of HTML, CSS, Javascript/JQuery, ReactJs,
-							NodeJs </p>
+						<p>Building interfaces that are fast, accessible, and alive.</p>
+					</section>
+					<section>
+						<span class="icon solid major fa-database"></span>
+						<h3>Backend &amp; Databases</h3>
+						<p>Architecting data layers that scale without drama.</p>
 					</section>
 					<section>
 						<span class="icon solid major fa-lock"></span>
 						<h3>Security</h3>
-						<p>Engineering and implementing secure code using OWASP rules.</p>
+						<p>OWASP-compliant code, secure auth flows, and a paranoid-but-practical approach to application security.</p>
 					</section>
-					<section>
-						<span class="icon solid major fa-cog"></span>
-						<h3>Backend Development & Database Management</h3>
-						<p>Building and managing efficient databases with Postgresql,PostGraphile, GraphQL</p>
-					</section>
-					<section>
-						<span class="icon solid major fa-desktop"></span>
-						<h3>Testing & Feedback</h3>
-						<p>Constructively testing and improving upon the quality of software through asynchromous
-							feedback. </p>
-					</section>
-
 				</div>
-
 			</div>
 		</section>
-		<!-- Three -->
-		<!-- Commented out -->
-		<!--<section id="three" class="wrapper">
-			<div class="inner">
-				<h2>My Work</h2>
-				<div class="card specific">
-					<div class="products">
-						<div class="product active">
-							<a href="https://main.d3q3qn26xyx2mz.amplifyapp.com/">
-								<div class="thumbnail"><img src="images/Hnet.com-image copy.jpg" />
-								</div>
-							</a>
-							<a href="https://main.d3q3qn26xyx2mz.amplifyapp.com/">
-								<h1 class="title">Basic E-Commerce</h1>
-							</a>
-							<p class="description">Built using semantic-ui and custom css, This basic e-commerce
-								application features<b> Redux{State Management}</b> and <b>React Hooks</b>.</p>
-						</div>
-						<div class="product">
-							<a href="https://main.d3q3qn26xyx2mz.amplifyapp.com/">
-								<div class="thumbnail"><img src="images/Chatapp.png" />
-								</div>
-							</a>
-							<a href="https://main.dijl7megnf8zd.amplifyapp.com/">
-								<h1 class="title">Chat-App</h1>
-							</a>
-							<p class="description">This simple chat
-								application features<b> Socket.io</b> and <b>React Hooks</b>.</p>
-						</div>
-						<div class="product">
-							<a href="https://main.d3uu616sif6amb.amplifyapp.com/">
-								<div class="thumbnail"><img src="images/Counter-app.png" />
-								</div>
-							</a>
-							<a href="https://main.d3uu616sif6amb.amplifyapp.com/">
-								<h1 class="title">Counter-App</h1>
-							</a>
-							<p class="description">This simple Counter-App
-								application features<b> Redux</b> and <b>React Hooks</b>.</p>
-						</div>
-						<div class="product">
-							<a href="https://desolate-fjord-77941.herokuapp.com/">
-								<div class="thumbnail"><img src="images/CommApp.png" />
-								</div>
-							</a>
-							<a href="https://desolate-fjord-77941.herokuapp.com/">
-								<h1 class="title">Communications App</h1>
-							</a>
-							<p class="description">This simple Communications App
-								application features<b> HTML, JavaScript</b> and <b>Express</b>.</p>
-						</div>
 
-					</div>
-					<div class="footer"><a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">Prev</a><a
-							class="btn" id="next" href="#" ripple="" ripple-color="#666666">Next</a></div>
-				</div>
-			</div>
-		</section>-->
-
-		<!-- Four -->
+		<!-- Contact -->
 		<section id="four" class="wrapper style1 fade-up">
 			<div class="inner">
-				<h2>Get in touch</h2>
-
+				<div class="section-header">
+					<span class="section-tag">Get in touch</span>
+					<h2>Let's build something.</h2>
+					<p class="section-sub">Have a project in mind? I'd love to hear about it.</p>
+				</div>
 				<div class="split style1">
 					<section>
 						<form action="https://formsubmit.co/jtorkornoo@gmail.com" method="POST">
 							<div class="fields">
 								<div class="field half">
 									<label for="name">Name</label>
-									<input type="text" name="name" id="name" placeholder="Full Name Please!!"
-										required />
+									<input type="text" name="name" id="name" placeholder="Your full name" required />
 								</div>
-								<div><input type="hidden" name="_next"
-										value="https://mrtorks.github.io/thankyou.html" />
-								</div>
+								<div><input type="hidden" name="_next" value="https://mrtorks.github.io/thankyou.html" /></div>
 								<div class="field half">
 									<label for="email">Email</label>
-									<input type="email" name="email" id="email" placeholder="username@yourdomain.com"
-										required />
+									<input type="email" name="email" id="email" placeholder="you@domain.com" required />
 								</div>
 								<div class="field">
 									<label for="message">Message</label>
-									<textarea name="message" id="message" rows="5" required></textarea>
+									<textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
 								</div>
 							</div>
 							<ul class="actions">
-								<li><a href="" class="button submit">Send Message</a></li>
+								<li><button type="submit" class="btn-primary">Send it <i class="fas fa-paper-plane"></i></button></li>
 							</ul>
 						</form>
 					</section>
 					<section>
-						<ul class="contact ">
+						<ul class="contact-list">
 							<li>
-								<h3>Address</h3>
-								<span>24 Macpherson Ave<br />
-									Kingston, ON.<br />
-									CANADA</span>
+								<div class="contact-icon"><i class="fas fa-envelope-open-text"></i></div>
+								<div>
+									<h3>Email</h3>
+									<a href="mailto:torkorno@icloud.com">torkorno@icloud.com</a>
+								</div>
 							</li>
-							<li>
-								<h3>Email</h3>
-								<a href="mailto:jtorkornoo@gmail.com">torkorno@icloud.com</a>
-							</li>
-							<li>
-								<h3>Phone</h3>
-								<span>(647) - 527 - 9086</span>
-							</li>
-
 						</ul>
 					</section>
 				</div>
@@ -244,26 +216,14 @@
 	<footer id="footer" class="wrapper style1-alt">
 		<div class="inner">
 			<ul class="menu">
-				<li>&copy; <span id="currentYear"></span>. All rights reserved.</li>
-				<li>Designed by: <a href="https://twitter.com/ajlkn">@ajlkn.</a> Modified by <a
-						href="https://twitter.com/mrtorks">@mrtorks</a>
-				</li>
+				<li>&copy; <span id="currentYear"></span> James Delali Torkornoo. All rights reserved.</li>
+				<li>Design by <a href="https://twitter.com/mrtorks" target="_blank" rel="noopener">@mrtorks</a></li>
 			</ul>
 		</div>
 	</footer>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/card.js"></script>
-	<script>$('#currentYear').text(new Date().getFullYear());</script>
-
+	<script src="assets/js/main.js" defer></script>
 
 </body>
-
 </html>

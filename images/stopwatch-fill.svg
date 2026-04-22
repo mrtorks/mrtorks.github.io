@@ -1,3 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch-fill" viewBox="0 0 16 16">
-  <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07A7.001 7.001 0 0 0 8 16a7 7 0 0 0 5.29-11.584.531.531 0 0 0 .013-.012l.354-.354.353.354a.5.5 0 1 0 .707-.707l-1.414-1.415a.5.5 0 1 0-.707.707l.354.354-.354.354a.717.717 0 0 0-.012.012A6.973 6.973 0 0 0 9 2.071V1h.5a.5.5 0 0 0 0-1h-3zm2 5.6V9a.5.5 0 0 1-.5.5H4.5a.5.5 0 0 1 0-1h3V5.6a.5.5 0 1 1 1 0z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Background glow -->
+  <circle cx="40" cy="44" r="28" fill="url(#watchGlow)" opacity="0.18"/>
+  <!-- Outer ring -->
+  <circle cx="40" cy="44" r="24" stroke="url(#ringGrad)" stroke-width="2.5" opacity="0.3"/>
+  <!-- Progress arc — ~75% filled, clockwise from top -->
+  <circle cx="40" cy="44" r="24"
+    stroke="url(#progressGrad)"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-dasharray="113 37"
+    stroke-dashoffset="28"
+    transform="rotate(-90 40 44)"/>
+  <!-- Face -->
+  <circle cx="40" cy="44" r="19" fill="url(#faceFill)" opacity="0.12"/>
+  <!-- Tick marks -->
+  <line x1="40" y1="22" x2="40" y2="26" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <line x1="40" y1="62" x2="40" y2="66" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <line x1="18" y1="44" x2="22" y2="44" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <line x1="58" y1="44" x2="62" y2="44" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <!-- Minute hand -->
+  <line x1="40" y1="44" x2="40" y2="28" stroke="url(#handGrad)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Hour hand -->
+  <line x1="40" y1="44" x2="51" y2="44" stroke="url(#handGrad2)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Center dot -->
+  <circle cx="40" cy="44" r="3" fill="url(#centerDot)"/>
+  <circle cx="40" cy="44" r="1.5" fill="white" opacity="0.9"/>
+  <!-- Crown / button top -->
+  <rect x="36" y="14" width="8" height="5" rx="2" fill="url(#crownGrad)"/>
+  <!-- Side buttons -->
+  <rect x="56" y="30" width="6" height="3" rx="1.5" fill="url(#btnGrad)" opacity="0.7"/>
+  <defs>
+    <linearGradient id="progressGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="16" y1="20" x2="64" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#67e8f9"/>
+    </linearGradient>
+    <linearGradient id="handGrad" x1="40" y1="44" x2="40" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a5b4fc"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="handGrad2" x1="40" y1="44" x2="51" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="crownGrad" x1="36" y1="14" x2="44" y2="19" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="56" y1="30" x2="62" y2="33" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="faceFill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="centerDot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </radialGradient>
+    <radialGradient id="watchGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
 </svg>
