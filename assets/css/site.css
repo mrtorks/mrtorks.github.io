@@ -340,3 +340,47 @@ img, svg { max-width: 100%; height: auto; }
 
 	.work-item:first-child .work-meta::before { background: var(--accent); }
 }
+
+/* About */
+.about { padding-bottom: var(--space-9); }
+
+.about-grid {
+	display: grid;
+	gap: var(--space-7);
+	margin-top: var(--space-6);
+}
+
+.about-text p + p { margin-top: var(--space-4); }
+
+.about-text p:first-child {
+	font-size: var(--step-1);
+	line-height: 1.45;
+}
+
+.about-skills h3 {
+	font-size: var(--step-1);
+	margin-bottom: var(--space-2);
+}
+
+.about-skills dl { margin: 0; }
+
+.about-skills dl > div {
+	padding: var(--space-4) 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.about-skills dl > div:last-child { border-bottom: 0; }
+
+.about-skills dt { font-weight: 500; }
+
+.about-skills dd {
+	margin: var(--space-1) 0 0;
+	color: var(--muted);
+}
+
+@media (min-width: 56rem) {
+	.about-grid {
+		grid-template-columns: 1.15fr 1fr;
+		gap: var(--space-9);
+	}
+}
