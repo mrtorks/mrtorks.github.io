@@ -1,110 +1,62 @@
-<!DOCTYPE HTML>
-<html lang="en" data-theme="dark">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Message sent, James Torkornoo</title>
+	<meta name="robots" content="noindex" />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/site.webmanifest">
-	<title>Message Received — James Torkornoo</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+	<script>
+		try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+	</script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/thankyou.css" />
-
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/site.css" />
 </head>
 
-<body class="is-preload ty-page">
+<body>
 
-	<!-- Cursor -->
-	<div id="cursor-dot"></div>
-	<div id="cursor-ring"></div>
-
-	<!-- Mesh background -->
-	<div class="mesh-bg" aria-hidden="true">
-		<div class="mesh-orb orb-1"></div>
-		<div class="mesh-orb orb-2"></div>
-		<div class="mesh-orb orb-3"></div>
-		<div class="grid-overlay"></div>
-	</div>
-
-	<!-- Card -->
-	<main class="ty-stage">
-		<div class="ty-card">
-
-			<div class="ty-icon-wrap" aria-hidden="true">
-				<div class="ty-icon-ring"></div>
-				<i class="fas fa-check"></i>
-			</div>
-
-			<span class="section-tag">Message received</span>
-
-			<h1 class="ty-heading">
-				<span class="ty-line">Thank</span>
-				<span class="ty-line accent-gradient">You.</span>
-			</h1>
-
-			<p class="ty-body">
-				Your message landed safely in my inbox. I'll get back to you as soon as possible — usually within 24 hours.
-			</p>
-
-			<p class="ty-sig">— James Torkornoo</p>
-
-			<div class="ty-redirect">
-				<span class="ty-redirect-label">Redirecting to homepage in</span>
-				<span class="ty-countdown" id="countdown">10</span>
-				<div class="ty-progress-track" aria-hidden="true">
-					<div class="ty-progress-bar" id="progressBar"></div>
-				</div>
-			</div>
-
-			<a href="index.html" class="btn-primary ty-btn">
-				<i class="fas fa-arrow-left"></i> Back to portfolio
-			</a>
-
+	<header class="site-header">
+		<div class="container">
+			<a class="brand" href="index.html">James Torkornoo</a>
+			<nav class="site-nav" aria-label="Main">
+				<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme">
+					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+				</button>
+			</nav>
 		</div>
+	</header>
+
+	<main id="main">
+		<section class="hero container" aria-labelledby="sent-title">
+			<h1 id="sent-title">Message sent</h1>
+			<p>Thanks for getting in touch. I usually reply within a day.</p>
+			<svg class="tide-line" viewBox="0 0 352 24" fill="none" aria-hidden="true">
+				<path d="M1 12 C 44 2, 88 2, 132 12 S 220 22, 264 12 S 330 4, 351 10" pathLength="1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+			</svg>
+			<div class="hero-actions">
+				<a class="btn" href="index.html">Back to the site</a>
+			</div>
+		</section>
 	</main>
 
-	<!-- Footer -->
-	<footer id="footer" class="ty-footer">
-		<ul class="menu">
-			<li>&copy; <span id="currentYear"></span> James Delali Torkornoo. All rights reserved.</li>
-			<li>Design by <a href="https://twitter.com/mrtorks" target="_blank" rel="noopener">@mrtorks</a></li>
-		</ul>
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-inner">
+				<p>&copy; <span id="currentYear"></span> James Torkornoo</p>
+			</div>
+		</div>
 	</footer>
 
-	<script src="assets/js/main.js" defer></script>
-	<script>
-		// Countdown + redirect
-		(function () {
-			const DURATION = 10;
-			const countEl = document.getElementById('countdown');
-			const barEl    = document.getElementById('progressBar');
-			let remaining  = DURATION;
-
-			// Animate progress bar via CSS transition
-			requestAnimationFrame(() => {
-				barEl.style.transition = `width ${DURATION}s linear`;
-				barEl.style.width = '0%';
-			});
-
-			const tick = setInterval(() => {
-				remaining--;
-				if (countEl) countEl.textContent = remaining;
-				if (remaining <= 0) {
-					clearInterval(tick);
-					window.location.href = 'index.html';
-				}
-			}, 1000);
-		})();
-	</script>
+	<script src="assets/js/site.js" defer></script>
 
 </body>
 </html>
