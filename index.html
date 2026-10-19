@@ -7,8 +7,10 @@
 	<title>James Torkornoo, full-stack developer and team lead</title>
 	<meta name="description" content="Full-stack developer and technical team lead in Canada. I build systems that stay up, and help teams ship them." />
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="icon" href="/favicon.ico" sizes="32x32">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<meta name="theme-color" content="#f0f7fa" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#101b23" media="(prefers-color-scheme: dark)">
 	<link rel="manifest" href="/site.webmanifest">
 
 	<script>
@@ -17,7 +19,10 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:opsz,wght@6..72,400&display=swap"></noscript>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&text=James%20Torkornoo&display=swap" media="print" onload="this.media='all'">
 	<link rel="stylesheet" href="assets/css/site.css" />
 </head>
 
@@ -48,7 +53,8 @@
 			<h1 id="hero-title">James Torkornoo</h1>
 			<p>Full-stack developer and technical team lead in Canada. I build systems that stay up, and help teams ship them.</p>
 			<svg class="tide-line" viewBox="0 0 352 24" fill="none" aria-hidden="true">
-				<path d="M1 12 C 44 2, 88 2, 132 12 S 220 22, 264 12 S 330 4, 351 10" pathLength="1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+				<defs><linearGradient id="tide-gradient" x1="0" x2="1" y1="0" y2="0"><stop offset="0" style="stop-color: var(--accent-3)"/><stop offset="0.5" style="stop-color: var(--accent)"/><stop offset="1" style="stop-color: var(--accent-2)"/></linearGradient></defs>
+				<path d="M1 12 C 44 2, 88 2, 132 12 S 220 22, 264 12 S 330 4, 351 10" pathLength="1" stroke="url(#tide-gradient)" stroke-width="2" stroke-linecap="round"/>
 			</svg>
 			<div class="hero-actions">
 				<a class="btn" href="mailto:jtorkornoo@gmail.com">Email me</a>
@@ -56,137 +62,115 @@
 			</div>
 		</section>
 
-		<!-- About -->
-		<section id="about" class="wrapper style2 spotlights">
-			<section class="spotlight-item">
-				<div class="spotlight-icon-wrap" aria-hidden="true">
-					<div class="spotlight-icon-bg"></div>
-					<img src="images/stack.svg" alt="" />
-				</div>
-				<div class="content">
-					<div class="inner">
-						<span class="section-tag">Background</span>
-						<h2>Engineered for depth.</h2>
-						<p>Computer Science professional with 7+ years building full-stack web solutions across diverse industries. I bridge the gap between pixel-perfect design and production-grade code.</p>
+		<section class="work container" id="work" aria-labelledby="work-title">
+			<header class="section-head">
+				<h2 id="work-title">Selected work</h2>
+				<p>Recent work at Nordech. Client names are left out.</p>
+			</header>
+			<ol class="work-list">
+				<li class="work-item">
+					<p class="work-meta"><span>2024 to now</span><span>Technical team lead</span></p>
+					<div class="work-body">
+						<h3>Automated a fragile release process</h3>
+						<p>Every deploy depended on a fractured, hand-run environment, so releases queued up. I built an automated CI/CD pipeline with Terraform and Ansible. The bottleneck went away and uptime went up.</p>
+						<p class="work-stack">Terraform, Ansible, AWS</p>
 					</div>
-				</div>
-			</section>
-			<section class="spotlight-item spotlight-item--alt">
-				<div class="content">
-					<div class="inner">
-						<span class="section-tag">Off the clock</span>
-						<h2>Wired for curiosity.</h2>
-						<p>Podcasts, football, mechanical keyboards, and late-night coding sessions. On any given day you'll find me deep in one of these — usually all four at once.</p>
+				</li>
+				<li class="work-item">
+					<p class="work-meta"><span>2022 to 2024</span><span>Backend and systems developer</span></p>
+					<div class="work-body">
+						<h3>Moved a legacy platform to Laravel without losing a record</h3>
+						<p>The platform ran on an obsolete framework. I migrated the database and application to Laravel and MySQL with 100% data integrity, and transaction processing became far more stable.</p>
+						<p class="work-stack">Laravel, PHP, MySQL</p>
 					</div>
-				</div>
-				<div class="spotlight-icon-wrap" aria-hidden="true">
-					<div class="spotlight-icon-bg"></div>
-					<img src="images/sliders.svg" alt="" />
-				</div>
-			</section>
-			<section class="spotlight-item">
-				<div class="spotlight-icon-wrap" aria-hidden="true">
-					<div class="spotlight-icon-bg"></div>
-					<img src="images/stopwatch-fill.svg" alt="" />
-				</div>
-				<div class="content">
-					<div class="inner">
-						<span class="section-tag">Right now</span>
-						<h2>Always in motion.</h2>
-						<p>Actively seeking opportunities to engineer solutions to real-world problems while staying sharp on the latest developments in design systems, AI tooling, and the web platform.</p>
+				</li>
+				<li class="work-item">
+					<p class="work-meta"><span>2022 to 2024</span><span>Backend and systems developer</span></p>
+					<div class="work-body">
+						<h3>Made workflow routing 25% more accurate</h3>
+						<p>Operations had goals but no spec. I worked with product stakeholders to turn those goals into one, then built a custom third-party API integration to route work correctly.</p>
+						<p class="work-stack">PHP, REST APIs, MySQL</p>
 					</div>
-				</div>
-			</section>
+				</li>
+			</ol>
 		</section>
 
-		<!-- Expertise -->
-		<section id="two" class="wrapper style3 fade-up">
-			<div class="inner">
-				<div class="section-header">
-					<span class="section-tag">Capabilities</span>
-					<h2>What I bring to the table.</h2>
-					<p class="section-sub">A full-spectrum toolkit — from wireframe to deployment.</p>
+		<section class="about container" id="about" aria-labelledby="about-title">
+			<header class="section-head">
+				<h2 id="about-title">About</h2>
+			</header>
+			<div class="about-grid">
+				<div class="about-text">
+					<p>I've spent more than seven years building for the web, from database schemas to the pipelines that ship them.</p>
+					<p>Today I lead the technical team at Nordech. I set up structured code reviews and mentor our junior developers, which cut escalations to senior engineers by 30%.</p>
+					<p>I'm open to full-time roles and to freelance projects. I hold an Applied Science diploma from St. Lawrence College, where I made the Dean's List with Honours.</p>
+					<p>Away from the keyboard, or at a mechanical one, I'm usually listening to a podcast or watching football.</p>
 				</div>
-				<div class="features">
-					<section>
-						<span class="icon solid major fa-object-group"></span>
-						<h3>UI/UX Design</h3>
-						<p>Interaction design, prototyping, and user research that converts.</p>
-					</section>
-					<section>
-						<span class="icon solid major fa-terminal"></span>
-						<h3>Frontend Development</h3>
-						<p>Building interfaces that are fast, accessible, and alive.</p>
-					</section>
-					<section>
-						<span class="icon solid major fa-database"></span>
-						<h3>Backend &amp; Databases</h3>
-						<p>Architecting data layers that scale without drama.</p>
-					</section>
-					<section>
-						<span class="icon solid major fa-lock"></span>
-						<h3>Security</h3>
-						<p>OWASP-compliant code, secure auth flows, and a paranoid-but-practical approach to application security.</p>
-					</section>
+				<div class="about-skills">
+					<h3>What I do</h3>
+					<dl>
+						<div>
+							<dt>Web applications</dt>
+							<dd>Full-stack builds in Laravel, Ruby on Rails, Go and Python, with JavaScript front ends and third-party API integrations.</dd>
+						</div>
+						<div>
+							<dt>Databases and migrations</dt>
+							<dd>MySQL and PostgreSQL schema design, query tuning, and large migrations that keep every record intact.</dd>
+						</div>
+						<div>
+							<dt>DevOps and cloud</dt>
+							<dd>AWS, Docker, Terraform and Ansible, with CI/CD that makes releases routine.</dd>
+						</div>
+						<div>
+							<dt>Leading and consulting</dt>
+							<dd>Turning business needs into clear specs, keeping stakeholders informed, and helping developers grow.</dd>
+						</div>
+					</dl>
 				</div>
 			</div>
 		</section>
 
-		<!-- Contact -->
-		<section id="contact" class="wrapper style1 fade-up">
-			<div class="inner">
-				<div class="section-header">
-					<span class="section-tag">Get in touch</span>
-					<h2>Let's build something.</h2>
-					<p class="section-sub">Have a project in mind? I'd love to hear about it.</p>
+		<section class="contact container" id="contact" aria-labelledby="contact-title">
+			<header class="section-head">
+				<h2 id="contact-title">Contact</h2>
+			</header>
+			<div class="contact-grid">
+				<div class="contact-intro">
+					<p>Hiring for a role, or have a project in mind? Tell me a little about it and I'll reply, usually within a day.</p>
+					<ul class="contact-links">
+						<li><a href="mailto:jtorkornoo@gmail.com">jtorkornoo@gmail.com</a></li>
+						<li><a href="https://www.linkedin.com/in/mrtorks/" rel="noopener">LinkedIn</a></li>
+						<li><a href="https://github.com/mrtorks" rel="noopener">GitHub</a></li>
+					</ul>
 				</div>
-				<div class="split style1">
-					<section>
-						<form action="https://formsubmit.co/jtorkornoo@gmail.com" method="POST">
-							<div class="fields">
-								<div class="field half">
-									<label for="name">Name</label>
-									<input type="text" name="name" id="name" placeholder="Your full name" required />
-								</div>
-								<div><input type="hidden" name="_next" value="https://mrtorks.github.io/thankyou.html" /></div>
-								<div class="field half">
-									<label for="email">Email</label>
-									<input type="email" name="email" id="email" placeholder="you@domain.com" required />
-								</div>
-								<div class="field">
-									<label for="message">Message</label>
-									<textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-								</div>
-							</div>
-							<ul class="actions">
-								<li><button type="submit" class="btn-primary">Send it <i class="fas fa-paper-plane"></i></button></li>
-							</ul>
-						</form>
-					</section>
-					<section>
-						<ul class="contact-list">
-							<li>
-								<div class="contact-icon"><i class="fas fa-envelope-open-text"></i></div>
-								<div>
-									<h3>Email</h3>
-									<a href="mailto:torkorno@icloud.com">torkorno@icloud.com</a>
-								</div>
-							</li>
-						</ul>
-					</section>
-				</div>
+				<form class="contact-form" action="https://formsubmit.co/jtorkornoo@gmail.com" method="POST">
+					<input type="hidden" name="_next" value="https://mrtorks.github.io/thankyou.html" />
+					<input type="hidden" name="_subject" value="New message from mrtorks.github.io" />
+					<div class="field">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" autocomplete="name" required />
+					</div>
+					<div class="field">
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" autocomplete="email" required />
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="5" required></textarea>
+					</div>
+					<button type="submit" class="btn">Send message</button>
+				</form>
 			</div>
 		</section>
 
 	</main>
 
-	<!-- Footer -->
-	<footer id="footer" class="wrapper style1-alt">
-		<div class="inner">
-			<ul class="menu">
-				<li>&copy; <span id="currentYear"></span> James Delali Torkornoo. All rights reserved.</li>
-				<li>Design by <a href="https://twitter.com/mrtorks" target="_blank" rel="noopener">@mrtorks</a></li>
-			</ul>
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-inner">
+				<p>&copy; <span id="currentYear"></span> James Torkornoo</p>
+				<a href="#top">Back to top</a>
+			</div>
 		</div>
 	</footer>
 
