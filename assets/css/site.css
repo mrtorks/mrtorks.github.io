@@ -8,6 +8,10 @@
 	--accent-ink: oklch(98.5% 0.005 225);
 	--line: oklch(88% 0.015 225);
 
+	/* Analogous neighbours of the teal accent, used for decoration only */
+	--accent-2: oklch(62% 0.09 165);
+	--accent-3: oklch(55% 0.08 240);
+
 	--font-head: "Newsreader", Georgia, serif;
 	--font-body: "Hanken Grotesk", system-ui, sans-serif;
 	--step--1: 0.844rem;
@@ -45,6 +49,8 @@
 		--accent: oklch(80% 0.07 190);
 		--accent-ink: oklch(21.5% 0.022 240);
 		--line: oklch(32% 0.025 240);
+		--accent-2: oklch(70% 0.08 165);
+		--accent-3: oklch(62% 0.08 245);
 		color-scheme: dark;
 	}
 }
@@ -57,6 +63,8 @@
 	--accent: oklch(80% 0.07 190);
 	--accent-ink: oklch(21.5% 0.022 240);
 	--line: oklch(32% 0.025 240);
+	--accent-2: oklch(70% 0.08 165);
+	--accent-3: oklch(62% 0.08 245);
 	color-scheme: dark;
 }
 
@@ -66,6 +74,8 @@
 
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-padding-top: 5rem; }
 
 body {
 	margin: 0;
@@ -86,6 +96,8 @@ h1, h2, h3 {
 }
 
 p { margin: 0; max-width: var(--measure); }
+
+::selection { background: color-mix(in oklab, var(--accent-2) 30%, transparent); }
 
 a { color: var(--accent); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
 
@@ -123,7 +135,20 @@ img, svg { max-width: 100%; height: auto; }
 	cursor: pointer;
 }
 
-/* Header */
+/* Header: sticks to the top and frosts once the page scrolls (site.js adds .is-scrolled) */
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.site-header.is-scrolled {
+	background: color-mix(in oklab, var(--bg) 88%, transparent);
+	-webkit-backdrop-filter: blur(14px) saturate(1.2);
+	backdrop-filter: blur(14px) saturate(1.2);
+	box-shadow: 0 1px 0 var(--line);
+}
+
 .site-header .container {
 	display: flex;
 	flex-wrap: wrap;
@@ -142,9 +167,13 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 .brand {
+	display: flex;
+	align-items: center;
+	height: 2.5rem;
 	color: var(--ink);
-	font-family: var(--font-head);
-	font-size: var(--step-1);
+	font-family: "Mrs Saint Delafield", cursive;
+	font-size: 2.5rem;
+	line-height: 1;
 	text-decoration: none;
 }
 
@@ -233,6 +262,8 @@ img, svg { max-width: 100%; height: auto; }
 /* The one moment of motion: the tide line draws in once on load */
 @media (prefers-reduced-motion: no-preference) {
 	html { scroll-behavior: smooth; }
+
+	.site-header { transition: background-color 0.25s ease, box-shadow 0.25s ease; }
 
 	.tide-line path {
 		stroke-dasharray: 1;
@@ -338,7 +369,10 @@ img, svg { max-width: 100%; height: auto; }
 		border: 1.5px solid var(--accent);
 	}
 
-	.work-item:first-child .work-meta::before { background: var(--accent); }
+	.work-item:first-child .work-meta::before {
+		background: var(--accent);
+		box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent-2) 25%, transparent);
+	}
 }
 
 /* About */
