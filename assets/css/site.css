@@ -78,6 +78,8 @@
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
 
+html { scroll-padding-top: 5rem; }
+
 body {
 	margin: 0;
 	background: var(--bg);
@@ -150,7 +152,20 @@ img, svg { max-width: 100%; height: auto; }
 	cursor: pointer;
 }
 
-/* Header */
+/* Header: sticks to the top and frosts once the page scrolls (site.js adds .is-scrolled) */
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+.site-header.is-scrolled {
+	background: color-mix(in oklab, var(--bg) 88%, transparent);
+	-webkit-backdrop-filter: blur(14px) saturate(1.2);
+	backdrop-filter: blur(14px) saturate(1.2);
+	box-shadow: 0 1px 0 var(--line);
+}
+
 .site-header .container {
 	display: flex;
 	flex-wrap: wrap;
@@ -169,9 +184,13 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 .brand {
+	display: flex;
+	align-items: center;
+	height: 2.5rem;
 	color: var(--ink);
-	font-family: var(--font-head);
-	font-size: var(--step-1);
+	font-family: "Mrs Saint Delafield", cursive;
+	font-size: 2.5rem;
+	line-height: 1;
 	text-decoration: none;
 }
 
@@ -260,6 +279,8 @@ img, svg { max-width: 100%; height: auto; }
 /* The one moment of motion: the tide line draws in once on load */
 @media (prefers-reduced-motion: no-preference) {
 	html { scroll-behavior: smooth; }
+
+	.site-header { transition: background-color 0.25s ease, box-shadow 0.25s ease; }
 
 	.tide-line path {
 		stroke-dasharray: 1;
