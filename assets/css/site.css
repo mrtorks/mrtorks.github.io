@@ -8,6 +8,11 @@
 	--accent-ink: oklch(98.5% 0.005 225);
 	--line: oklch(88% 0.015 225);
 
+	/* Analogous neighbours of the teal accent, used for decoration only */
+	--accent-2: oklch(62% 0.09 165);
+	--accent-3: oklch(55% 0.08 240);
+	--wash: 12%;
+
 	--font-head: "Newsreader", Georgia, serif;
 	--font-body: "Hanken Grotesk", system-ui, sans-serif;
 	--step--1: 0.844rem;
@@ -45,6 +50,9 @@
 		--accent: oklch(80% 0.07 190);
 		--accent-ink: oklch(21.5% 0.022 240);
 		--line: oklch(32% 0.025 240);
+		--accent-2: oklch(70% 0.08 165);
+		--accent-3: oklch(62% 0.08 245);
+		--wash: 8%;
 		color-scheme: dark;
 	}
 }
@@ -57,6 +65,9 @@
 	--accent: oklch(80% 0.07 190);
 	--accent-ink: oklch(21.5% 0.022 240);
 	--line: oklch(32% 0.025 240);
+	--accent-2: oklch(70% 0.08 165);
+	--accent-3: oklch(62% 0.08 245);
+	--wash: 8%;
 	color-scheme: dark;
 }
 
@@ -86,6 +97,22 @@ h1, h2, h3 {
 }
 
 p { margin: 0; max-width: var(--measure); }
+
+/* A faint analogous wash behind the header and hero, like light on water.
+   It sits on its own layer, capped in height, so contrast checkers can still
+   measure every section below it. --wash is capped so text stays AA at its peak. */
+.wash {
+	position: absolute;
+	inset: 0 0 auto;
+	height: 36rem;
+	z-index: -1;
+	pointer-events: none;
+	background-image:
+		radial-gradient(48rem 26rem at 88% -6rem, color-mix(in oklab, var(--accent-2) var(--wash), transparent), transparent),
+		radial-gradient(44rem 24rem at 6% -8rem, color-mix(in oklab, var(--accent-3) var(--wash), transparent), transparent);
+}
+
+::selection { background: color-mix(in oklab, var(--accent-2) 30%, transparent); }
 
 a { color: var(--accent); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
 
@@ -338,7 +365,10 @@ img, svg { max-width: 100%; height: auto; }
 		border: 1.5px solid var(--accent);
 	}
 
-	.work-item:first-child .work-meta::before { background: var(--accent); }
+	.work-item:first-child .work-meta::before {
+		background: var(--accent);
+		box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent-2) 25%, transparent);
+	}
 }
 
 /* About */

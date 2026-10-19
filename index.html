@@ -27,6 +27,8 @@
 
 <body>
 
+	<div class="wash" aria-hidden="true"></div>
+
 	<a class="skip-link" href="#main">Skip to content</a>
 
 	<header class="site-header">
@@ -52,7 +54,8 @@
 			<h1 id="hero-title">James Torkornoo</h1>
 			<p>Full-stack developer and technical team lead in Canada. I build systems that stay up, and help teams ship them.</p>
 			<svg class="tide-line" viewBox="0 0 352 24" fill="none" aria-hidden="true">
-				<path d="M1 12 C 44 2, 88 2, 132 12 S 220 22, 264 12 S 330 4, 351 10" pathLength="1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+				<defs><linearGradient id="tide-gradient" x1="0" x2="1" y1="0" y2="0"><stop offset="0" style="stop-color: var(--accent-3)"/><stop offset="0.5" style="stop-color: var(--accent)"/><stop offset="1" style="stop-color: var(--accent-2)"/></linearGradient></defs>
+				<path d="M1 12 C 44 2, 88 2, 132 12 S 220 22, 264 12 S 330 4, 351 10" pathLength="1" stroke="url(#tide-gradient)" stroke-width="2" stroke-linecap="round"/>
 			</svg>
 			<div class="hero-actions">
 				<a class="btn" href="mailto:jtorkornoo@gmail.com">Email me</a>
