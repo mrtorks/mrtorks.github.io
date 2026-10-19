@@ -124,61 +124,47 @@
 			</div>
 		</section>
 
-		<!-- Contact -->
-		<section id="contact" class="wrapper style1 fade-up">
-			<div class="inner">
-				<div class="section-header">
-					<span class="section-tag">Get in touch</span>
-					<h2>Let's build something.</h2>
-					<p class="section-sub">Have a project in mind? I'd love to hear about it.</p>
+		<section class="contact container" id="contact" aria-labelledby="contact-title">
+			<header class="section-head">
+				<h2 id="contact-title">Contact</h2>
+			</header>
+			<div class="contact-grid">
+				<div class="contact-intro">
+					<p>Hiring for a role, or have a project in mind? Tell me a little about it and I'll reply, usually within a day.</p>
+					<ul class="contact-links">
+						<li><a href="mailto:jtorkornoo@gmail.com">jtorkornoo@gmail.com</a></li>
+						<li><a href="https://www.linkedin.com/in/mrtorks/" rel="noopener">LinkedIn</a></li>
+						<li><a href="https://github.com/mrtorks" rel="noopener">GitHub</a></li>
+					</ul>
 				</div>
-				<div class="split style1">
-					<section>
-						<form action="https://formsubmit.co/jtorkornoo@gmail.com" method="POST">
-							<div class="fields">
-								<div class="field half">
-									<label for="name">Name</label>
-									<input type="text" name="name" id="name" placeholder="Your full name" required />
-								</div>
-								<div><input type="hidden" name="_next" value="https://mrtorks.github.io/thankyou.html" /></div>
-								<div class="field half">
-									<label for="email">Email</label>
-									<input type="email" name="email" id="email" placeholder="you@domain.com" required />
-								</div>
-								<div class="field">
-									<label for="message">Message</label>
-									<textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-								</div>
-							</div>
-							<ul class="actions">
-								<li><button type="submit" class="btn-primary">Send it <i class="fas fa-paper-plane"></i></button></li>
-							</ul>
-						</form>
-					</section>
-					<section>
-						<ul class="contact-list">
-							<li>
-								<div class="contact-icon"><i class="fas fa-envelope-open-text"></i></div>
-								<div>
-									<h3>Email</h3>
-									<a href="mailto:torkorno@icloud.com">torkorno@icloud.com</a>
-								</div>
-							</li>
-						</ul>
-					</section>
-				</div>
+				<form class="contact-form" action="https://formsubmit.co/jtorkornoo@gmail.com" method="POST">
+					<input type="hidden" name="_next" value="https://mrtorks.github.io/thankyou.html" />
+					<input type="hidden" name="_subject" value="New message from mrtorks.github.io" />
+					<div class="field">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" autocomplete="name" required />
+					</div>
+					<div class="field">
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" autocomplete="email" required />
+					</div>
+					<div class="field">
+						<label for="message">Message</label>
+						<textarea name="message" id="message" rows="5" required></textarea>
+					</div>
+					<button type="submit" class="btn">Send message</button>
+				</form>
 			</div>
 		</section>
 
 	</main>
 
-	<!-- Footer -->
-	<footer id="footer" class="wrapper style1-alt">
-		<div class="inner">
-			<ul class="menu">
-				<li>&copy; <span id="currentYear"></span> James Delali Torkornoo. All rights reserved.</li>
-				<li>Design by <a href="https://twitter.com/mrtorks" target="_blank" rel="noopener">@mrtorks</a></li>
-			</ul>
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-inner">
+				<p>&copy; <span id="currentYear"></span> James Torkornoo</p>
+				<a href="#top">Back to top</a>
+			</div>
 		</div>
 	</footer>
 
