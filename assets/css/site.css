@@ -512,8 +512,9 @@ img, svg { max-width: 100%; height: auto; }
 	font-size: var(--step--1);
 }
 
-/* Site status: how long the site has been up and its latest commit (filled in by site.js) */
-.site-status {
+/* Site status: uptime, latest commit and Lighthouse scores (filled in by site.js) */
+.site-status,
+.site-scores {
 	display: flex;
 	align-items: center;
 	gap: var(--space-2);
