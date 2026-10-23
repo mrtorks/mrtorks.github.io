@@ -29,6 +29,12 @@
 		onScroll();
 	}
 
-	var year = document.getElementById('currentYear');
+	var print = document.getElementById('resume-print');
+	if (print) {
+		print.hidden = false;
+		print.addEventListener('click', function () { window.print(); });
+	}
+
+		var year = document.getElementById('currentYear');
 	if (year) year.textContent = new Date().getFullYear();
 })();
