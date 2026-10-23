@@ -134,22 +134,48 @@
 				</div>
 			</div>
 			<div class="lab-panel" role="tabpanel" id="panel-tune" aria-labelledby="tab-tune" hidden>
-				<p class="lab-intro">A customer's open-orders page took almost two seconds to load. Step through how I'd make the query behind it fast.</p>
+				<p class="lab-intro">Your turn. A customer's open-orders page takes almost two seconds to load. Build an index that gets its query under 1 ms. For a perfect score, read only the 20 rows the query returns, with no wasted columns.</p>
 				<div class="qp" id="query-demo">
-					<div class="qp-steps" role="group" aria-label="Steps">
-						<button class="qp-step" type="button" data-step="0" aria-pressed="true">1. No index</button>
-						<button class="qp-step" type="button" data-step="1" aria-pressed="false">2. Index one column</button>
-						<button class="qp-step" type="button" data-step="2" aria-pressed="false">3. Composite index</button>
+					<div class="qp-brief">
+						<p class="qp-label">The query</p>
+						<pre class="qp-code"><code>SELECT id, total, created_at
+FROM orders
+WHERE customer_id = 4821
+  AND status = 'open'
+ORDER BY created_at DESC
+LIMIT 20;</code></pre>
+						<p class="qp-label">What you know about the data</p>
+						<ul class="qp-facts">
+							<li><code>orders</code> has 2.4 million rows (310 MB) in PostgreSQL 16.</li>
+							<li>80,000 customers. Customer 4821 has 3,150 orders, 42 of them open.</li>
+							<li><code>status</code> is 85% shipped, 12% cancelled and 3% open.</li>
+							<li>Open orders are almost always the most recent ones.</li>
+						</ul>
 					</div>
-					<pre class="qp-code"><code id="qp-sql"></code></pre>
+					<div class="qp-builder">
+						<p class="qp-label">Build an index: click columns in the order you want them</p>
+						<div class="qp-columns" id="qp-columns">
+							<button class="qp-step" type="button" data-col="customer_id">customer_id</button>
+							<button class="qp-step" type="button" data-col="status">status</button>
+							<button class="qp-step" type="button" data-col="created_at">created_at</button>
+							<button class="qp-step" type="button" data-col="total">total</button>
+						</div>
+						<pre class="qp-code"><code id="qp-index"></code></pre>
+						<div class="qp-actions">
+							<button class="btn" type="button" id="qp-run">Run EXPLAIN ANALYZE</button>
+							<button class="qp-step" type="button" id="qp-clear">Clear</button>
+						</div>
+					</div>
 					<dl class="qp-stats">
-						<div><dt>Query time</dt><dd id="qp-time"></dd></div>
+						<div><dt>Execution time</dt><dd id="qp-time"></dd></div>
 						<div><dt>Rows read</dt><dd id="qp-rows"></dd></div>
+						<div><dt>Index size</dt><dd id="qp-size"></dd></div>
+						<div><dt>Attempts</dt><dd id="qp-attempts">0</dd></div>
 					</dl>
 					<div class="qp-bar" aria-hidden="true"><span id="qp-bar"></span></div>
+					<p class="qp-note" id="qp-note" aria-live="polite"></p>
 					<p class="qp-label">Query plan</p>
 					<pre class="qp-code qp-plan"><code id="qp-plan"></code></pre>
-					<p class="qp-note" id="qp-note" aria-live="polite"></p>
 				</div>
 			</div>
 			<div class="lab-panel" role="tabpanel" id="panel-migrate" aria-labelledby="tab-migrate" hidden>
