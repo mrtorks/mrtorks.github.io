@@ -249,6 +249,16 @@ img, svg { max-width: 100%; height: auto; }
 	height: 24px;
 	margin-top: var(--space-6);
 	color: var(--accent);
+	touch-action: pan-y;
+}
+
+.tide-marker { fill: var(--accent); }
+.tide-marker[hidden] { display: none; }
+
+.hero .tide-caption {
+	margin-top: var(--space-2);
+	color: var(--muted);
+	font-size: var(--step--1);
 }
 
 .hero-actions {
