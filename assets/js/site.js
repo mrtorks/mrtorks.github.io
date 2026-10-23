@@ -42,6 +42,31 @@
 			next.focus();
 		});
 	});
+	// TL;DR mode: a 30-second summary for recruiters. ?tldr in the URL opens it,
+	// so the short version can be shared as a link.
+	var tldrToggle = document.getElementById('tldr-toggle');
+	var tldr = document.getElementById('tldr');
+	if (tldrToggle && tldr) {
+		var setTldr = function (on) {
+			Array.prototype.forEach.call(document.querySelectorAll('main > section'), function (section) {
+				if (section.id !== 'top' && section.id !== 'contact') section.hidden = on ? section !== tldr : section === tldr;
+			});
+			tldrToggle.setAttribute('aria-pressed', on);
+			tldrToggle.textContent = on ? 'Full version' : '30-second version';
+			try { history.replaceState(null, '', on ? '?tldr' : location.pathname); } catch (e) {}
+		};
+		tldrToggle.hidden = false;
+		tldrToggle.addEventListener('click', function () {
+			setTldr(tldrToggle.getAttribute('aria-pressed') !== 'true');
+		});
+		// A link to a section the summary hides switches back to the full version first
+		document.addEventListener('click', function (e) {
+			var link = e.target.closest && e.target.closest('a[href^="#"]');
+			var target = link && document.getElementById(link.getAttribute('href').slice(1));
+			if (target && target.hidden) setTldr(false);
+		});
+		if (/[?&]tldr\b/.test(location.search)) setTldr(true);
+	}
 
 	var header = document.querySelector('.site-header');
 	if (header) {
