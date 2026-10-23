@@ -1,0 +1,45 @@
+# Runs Lighthouse against the live site after each Pages deploy and saves
+# the scores to data/lighthouse.json, which the footer shows.
+name: Lighthouse scores
+
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    # Skip deploys of the bot's own data commits, so saving scores doesn't trigger another audit
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_commit.author.name != 'github-actions[bot]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Run Lighthouse
+        run: |
+          npx -y lighthouse@12 "https://${{ github.repository_owner }}.github.io/" --quiet \
+            --output=json --output-path=lh.json \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --chrome-flags="--headless=new --no-sandbox"
+          jq '{checked: (now | todate), scores: {
+            performance: (.categories.performance.score * 100 | round),
+            accessibility: (.categories.accessibility.score * 100 | round),
+            "best-practices": (.categories["best-practices"].score * 100 | round),
+            seo: (.categories.seo.score * 100 | round)}}' lh.json > data/lighthouse.json
+
+      - name: Commit if scores changed
+        run: |
+          git diff --quiet -I '"checked"' data/lighthouse.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Refresh Lighthouse scores"
+          git push

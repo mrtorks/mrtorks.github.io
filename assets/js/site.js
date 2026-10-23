@@ -130,11 +130,25 @@
 			.catch(function () {});
 	}
 
-	var year = document.getElementById('currentYear');
 	var print = document.getElementById('resume-print');
 	if (print) {
 		print.hidden = false;
 		print.addEventListener('click', function () { window.print(); });
+	}
+
+	// Show the latest Lighthouse scores, saved after each deploy (see data/lighthouse.json)
+	var scores = document.getElementById('site-scores');
+	if (scores && window.fetch) {
+		fetch('data/lighthouse.json')
+			.then(function (res) { return res.ok ? res.json() : Promise.reject(); })
+			.then(function (data) {
+				var s = data.scores;
+				scores.textContent = 'Lighthouse: ' + s.performance + ' performance · ' + s.accessibility +
+					' accessibility · ' + s['best-practices'] + ' best practices · ' + s.seo + ' SEO';
+				scores.title = 'Checked ' + new Date(data.checked).toLocaleDateString();
+				scores.hidden = false;
+			})
+			.catch(function () {});
 	}
 
 		var year = document.getElementById('currentYear');
