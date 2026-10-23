@@ -913,3 +913,83 @@ img, svg { max-width: 100%; height: auto; }
 .mg-outcome.is-good { border-color: var(--accent-2); }
 .mg-outcome.is-ok { border-color: oklch(75% 0.12 85); }
 .mg-outcome.is-bad { border-color: oklch(62% 0.16 30); }
+
+/* Command palette (driven by palette.js): ⌘K or Ctrl+K */
+.palette-open {
+	display: none;
+	padding: var(--space-1) var(--space-2);
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	background: transparent;
+	color: var(--muted);
+	font: inherit;
+	font-size: var(--step--1);
+	cursor: pointer;
+}
+
+.palette-open:hover { color: var(--ink); }
+.palette-open kbd { font-family: inherit; }
+
+@media (min-width: 48rem) {
+	.palette-open:not([hidden]) { display: block; }
+}
+
+.palette {
+	width: min(32rem, calc(100% - 2 * var(--gutter)));
+	margin: 15vh auto auto;
+	padding: 0;
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--bg);
+	color: var(--ink);
+	box-shadow: 0 20px 50px rgb(0 0 0 / 0.25);
+}
+
+.palette::backdrop {
+	background: color-mix(in oklab, var(--ink) 30%, transparent);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+.palette-input {
+	width: 100%;
+	padding: var(--space-4) var(--space-5);
+	border: 0;
+	border-bottom: 1px solid var(--line);
+	background: transparent;
+	color: var(--ink);
+	font: inherit;
+}
+
+.palette-input:focus-visible { outline: none; }
+
+.palette-list {
+	max-height: 50vh;
+	margin: 0;
+	padding: var(--space-2);
+	overflow-y: auto;
+	list-style: none;
+}
+
+.palette-list li {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--space-4);
+	padding: var(--space-2) var(--space-3);
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.palette-list li span:last-child { color: var(--muted); font-size: var(--step--1); }
+
+.palette-list [aria-selected="true"] { background: var(--surface); }
+
+.palette-list .palette-empty { color: var(--muted); cursor: default; }
+
+.palette-hint {
+	padding: var(--space-2) var(--space-5);
+	border-top: 1px solid var(--line);
+	color: var(--muted);
+	font-size: var(--step--1);
+	max-width: none;
+}
