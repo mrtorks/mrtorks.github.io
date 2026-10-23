@@ -757,11 +757,34 @@ img, svg { max-width: 100%; height: auto; }
 	background: var(--surface);
 }
 
-.qp-steps {
+.qp-columns,
+.qp-actions {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: center;
 	gap: var(--space-2);
 }
+
+.qp-brief,
+.qp-builder {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.qp-facts {
+	margin: 0;
+	padding-left: 1.2em;
+	color: var(--muted);
+	font-size: var(--step--1);
+}
+
+.qp-facts code,
+.qp-step { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.qp-step:disabled { opacity: 0.4; cursor: default; }
+
+.qp-note.is-pass { color: var(--accent-2); }
+.qp-note.is-fail { color: oklch(68% 0.15 30); }
 
 .qp-step {
 	padding: var(--space-2) var(--space-3);
@@ -820,16 +843,16 @@ img, svg { max-width: 100%; height: auto; }
 	background: linear-gradient(90deg, var(--accent-2), var(--accent));
 }
 
-.qp-label { color: var(--muted); font-size: var(--step--1); margin-bottom: calc(var(--space-2) * -1); }
+.qp-label { color: var(--muted); font-size: var(--step--1); }
 
 @media (prefers-reduced-motion: no-preference) {
 	.qp-bar span { transition: width 0.6s ease; }
 }
 
-/* Migration replay demo (driven by migration.js); reuses the failover stats and log styles */
+/* Migration demo (driven by migration.js); reuses the failover stats styles */
 .mg {
 	display: grid;
-	gap: var(--space-5);
+	gap: var(--space-4);
 	justify-items: start;
 	margin-top: var(--space-5);
 	padding: var(--space-5);
@@ -838,39 +861,57 @@ img, svg { max-width: 100%; height: auto; }
 	background: var(--surface);
 }
 
-.mg .btn:disabled { opacity: 0.6; cursor: default; }
-
-.mg-batches {
-	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+.mg-progress {
+	display: flex;
 	gap: var(--space-2);
-	width: 100%;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-@media (min-width: 40rem) {
-	.mg-batches { grid-template-columns: repeat(12, 1fr); }
+.mg-progress li {
+	width: 2rem;
+	height: 4px;
+	border-radius: 999px;
+	background: var(--line);
 }
 
-.mg-batches li {
-	height: 2.25rem;
+.mg-progress .is-good { background: var(--accent-2); }
+.mg-progress .is-bad { background: oklch(62% 0.16 30); }
+.mg-progress .is-ok { background: oklch(75% 0.12 85); }
+
+.mg-count { color: var(--muted); font-size: var(--step--1); }
+
+.mg-question { font-size: var(--step-1); }
+
+.mg-context { color: var(--muted); }
+
+.mg-options {
+	display: grid;
+	gap: var(--space-2);
+	width: 100%;
+}
+
+.mg-option {
+	padding: var(--space-3) var(--space-4);
 	border: 1px solid var(--line);
-	border-radius: 6px;
+	border-radius: var(--radius);
 	background: var(--bg);
+	color: var(--ink);
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
 }
 
-.mg-batches .is-copying { border-color: var(--accent); background: color-mix(in oklab, var(--accent) 35%, var(--bg)); }
-.mg-batches .is-done { border-color: var(--accent-2); background: var(--accent-2); }
-.mg-batches .is-failed { border-color: oklch(62% 0.16 30); background: oklch(62% 0.16 30); }
-.mg-batches .is-retrying { border-color: oklch(75% 0.12 85); background: color-mix(in oklab, oklch(75% 0.12 85) 45%, var(--bg)); }
+.mg-option:hover:not(:disabled) { border-color: var(--muted); }
+.mg-option:disabled { cursor: default; opacity: 0.55; }
+.mg-option[aria-pressed="true"] { opacity: 1; border-color: var(--accent); }
 
-.mg .fo-log { width: 100%; }
-
-@media (prefers-reduced-motion: no-preference) {
-	.mg-batches li { transition: background-color 0.25s ease, border-color 0.25s ease; }
-}
+.mg-outcome:empty { display: none; }
+.mg-outcome { padding-left: var(--space-4); border-left: 2px solid var(--line); }
+.mg-outcome.is-good { border-color: var(--accent-2); }
+.mg-outcome.is-ok { border-color: oklch(75% 0.12 85); }
+.mg-outcome.is-bad { border-color: oklch(62% 0.16 30); }
 
 /* Command palette (driven by palette.js): ⌘K or Ctrl+K */
 .palette-open {
