@@ -95,6 +95,36 @@
 			</ol>
 		</section>
 
+		<section class="failover container" id="failover" aria-labelledby="failover-title">
+			<header class="section-head">
+				<h2 id="failover-title">Try to break it</h2>
+				<p>A small model of the kind of system I run. Click a server to take it down, then watch health checks route traffic around it. Each one restarts on its own.</p>
+			</header>
+			<div class="failover-demo" id="failover-demo">
+				<div class="fo-tier">
+					<p class="fo-label">App servers</p>
+					<div class="fo-nodes">
+						<button class="fo-node" type="button" data-node="app-1"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-1</span><span class="fo-state">Serving</span></button>
+						<button class="fo-node" type="button" data-node="app-2"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-2</span><span class="fo-state">Serving</span></button>
+						<button class="fo-node" type="button" data-node="app-3"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-3</span><span class="fo-state">Serving</span></button>
+					</div>
+				</div>
+				<div class="fo-tier">
+					<p class="fo-label">Database</p>
+					<div class="fo-nodes">
+						<button class="fo-node" type="button" data-node="db-1"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">db-1</span><span class="fo-state">Primary</span></button>
+						<button class="fo-node" type="button" data-node="db-2"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">db-2</span><span class="fo-state">Replica</span></button>
+					</div>
+				</div>
+				<dl class="fo-stats">
+					<div><dt>Requests served</dt><dd id="fo-served">0</dd></div>
+					<div><dt>Failed</dt><dd id="fo-failed">0</dd></div>
+					<div><dt>Success rate</dt><dd id="fo-rate">100%</dd></div>
+				</dl>
+				<ol class="fo-log" id="fo-log" aria-live="polite"><li>All systems healthy.</li></ol>
+			</div>
+		</section>
+
 		<section class="about container" id="about" aria-labelledby="about-title">
 			<header class="section-head">
 				<h2 id="about-title">About</h2>
@@ -176,6 +206,7 @@
 
 	<!-- Scripts -->
 	<script src="assets/js/site.js" defer></script>
+	<script src="assets/js/failover.js" defer></script>
 
 </body>
 </html>
