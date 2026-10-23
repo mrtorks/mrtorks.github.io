@@ -589,4 +589,97 @@ img, svg { max-width: 100%; height: auto; }
 	.resume h2 { font-size: 12pt; margin-bottom: 4pt; }
 	.resume a { color: inherit; text-decoration: none; }
 	.resume-role { break-inside: avoid; }
+/* "Try to break it": the failover demo (driven by failover.js) */
+.failover { padding-bottom: var(--space-9); }
+
+.failover-demo {
+	display: grid;
+	gap: var(--space-5);
+	margin-top: var(--space-6);
+	padding: var(--space-5);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--surface);
+}
+
+.fo-label {
+	margin-bottom: var(--space-2);
+	color: var(--muted);
+	font-size: var(--step--1);
+}
+
+.fo-nodes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+	gap: var(--space-3);
+}
+
+.fo-node {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 0 var(--space-2);
+	padding: var(--space-3) var(--space-4);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--bg);
+	color: var(--ink);
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.fo-node:hover { border-color: var(--muted); }
+
+.fo-dot {
+	grid-row: span 2;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--accent-2);
+}
+
+.fo-name { font-weight: 500; font-variant-numeric: tabular-nums; }
+
+.fo-state { color: var(--muted); font-size: var(--step--1); }
+
+.fo-node.is-hit .fo-dot { box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent-2) 35%, transparent); }
+
+.fo-node.is-failing { border-color: oklch(62% 0.16 30); }
+.fo-node.is-failing .fo-dot { background: oklch(62% 0.16 30); }
+
+.fo-node.is-out,
+.fo-node.is-restarting { cursor: default; }
+.fo-node.is-out .fo-dot { background: var(--muted); }
+.fo-node.is-restarting .fo-dot { background: oklch(75% 0.12 85); }
+
+.fo-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3) var(--space-6);
+	margin: 0;
+}
+
+.fo-stats dt { color: var(--muted); font-size: var(--step--1); }
+
+.fo-stats dd {
+	margin: 0;
+	font-family: var(--font-head);
+	font-size: var(--step-1);
+	font-variant-numeric: tabular-nums;
+}
+
+.fo-log {
+	margin: 0;
+	padding: var(--space-3) 0 0;
+	border-top: 1px solid var(--line);
+	color: var(--muted);
+	font-size: var(--step--1);
+	list-style: none;
+}
+
+.fo-log li:first-child { color: var(--ink); }
+
+@media (prefers-reduced-motion: no-preference) {
+	.fo-dot { transition: box-shadow 0.12s ease, background-color 0.2s ease; }
 }
