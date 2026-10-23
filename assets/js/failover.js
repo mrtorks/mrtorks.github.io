@@ -47,7 +47,6 @@
 		}[node.state];
 		node.el.className = 'fo-node is-' + node.state;
 		node.el.querySelector('.fo-state').textContent = label;
-		node.el.setAttribute('aria-label', name + ', ' + label + (node.state === 'up' ? '. Click to take it down' : ''));
 	}
 
 	function kill(name) {
