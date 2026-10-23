@@ -171,10 +171,17 @@ img, svg { max-width: 100%; height: auto; }
 	align-items: center;
 	height: 2.5rem;
 	color: var(--ink);
-	font-family: "Mrs Saint Delafield", cursive;
-	font-size: 2.5rem;
+	font-family: var(--font-head);
+	font-size: var(--step-1);
 	line-height: 1;
 	text-decoration: none;
+	transition: opacity 0.25s ease, visibility 0.25s;
+}
+
+/* The hero already shows the name, so the header only shows it once the hero is out of view */
+.site-header.hide-brand .brand {
+	opacity: 0;
+	visibility: hidden;
 }
 
 .site-nav {
