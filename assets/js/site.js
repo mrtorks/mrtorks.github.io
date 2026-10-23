@@ -22,6 +22,26 @@
 		updateLabel();
 	}
 
+	// Tabs in the "Try it yourself" section; arrow keys move between them
+	var tabs = Array.prototype.slice.call(document.querySelectorAll('.lab-tab'));
+	function selectTab(tab) {
+		tabs.forEach(function (t) {
+			var on = t === tab;
+			t.setAttribute('aria-selected', on);
+			t.tabIndex = on ? 0 : -1;
+			document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+		});
+	}
+	tabs.forEach(function (tab, i) {
+		tab.addEventListener('click', function () { selectTab(tab); });
+		tab.addEventListener('keydown', function (e) {
+			var step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+			if (!step) return;
+			var next = tabs[(i + step + tabs.length) % tabs.length];
+			selectTab(next);
+			next.focus();
+		});
+	});
 	// TL;DR mode: a 30-second summary for recruiters. ?tldr in the URL opens it,
 	// so the short version can be shared as a link.
 	var tldrToggle = document.getElementById('tldr-toggle');
@@ -135,11 +155,25 @@
 			.catch(function () {});
 	}
 
-	var year = document.getElementById('currentYear');
 	var print = document.getElementById('resume-print');
 	if (print) {
 		print.hidden = false;
 		print.addEventListener('click', function () { window.print(); });
+	}
+
+	// Show the latest Lighthouse scores, saved after each deploy (see data/lighthouse.json)
+	var scores = document.getElementById('site-scores');
+	if (scores && window.fetch) {
+		fetch('data/lighthouse.json')
+			.then(function (res) { return res.ok ? res.json() : Promise.reject(); })
+			.then(function (data) {
+				var s = data.scores;
+				scores.textContent = 'Lighthouse: ' + s.performance + ' performance · ' + s.accessibility +
+					' accessibility · ' + s['best-practices'] + ' best practices · ' + s.seo + ' SEO';
+				scores.title = 'Checked ' + new Date(data.checked).toLocaleDateString();
+				scores.hidden = false;
+			})
+			.catch(function () {});
 	}
 
 		var year = document.getElementById('currentYear');
