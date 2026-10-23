@@ -61,7 +61,7 @@
 		path.setAttribute('d', d);
 
 		var total = weeks.reduce(function (sum, w) { return sum + w.count; }, 0);
-		var summary = total + ' GitHub contributions in the past year';
+		var summary = total.toLocaleString() + ' GitHub contributions in the past year';
 		var dateFormat = { month: 'short', day: 'numeric', year: 'numeric' };
 		caption.textContent = summary;
 		caption.hidden = false;
