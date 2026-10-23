@@ -583,7 +583,7 @@ img, svg { max-width: 100%; height: auto; }
 
 	body { font-size: 10pt; line-height: 1.4; }
 
-	.site-header, .skip-link { display: none; }
+	.site-header, .site-footer, .skip-link { display: none; }
 
 	.resume { max-width: none; padding: 0; }
 	.resume-head h1 { font-size: 20pt; }
