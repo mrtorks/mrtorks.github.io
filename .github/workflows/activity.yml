@@ -1,0 +1,42 @@
+# Refreshes data/activity.json, the weekly GitHub contribution totals
+# that draw the wave under the name on the home page.
+name: Refresh activity
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch weekly contribution totals
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api graphql -f login="${{ github.repository_owner }}" -f query='
+            query($login: String!) {
+              user(login: $login) {
+                contributionsCollection {
+                  contributionCalendar { weeks { firstDay contributionDays { contributionCount } } }
+                }
+              }
+            }' --jq '{
+              updated: (now | todate),
+              weeks: [.data.user.contributionsCollection.contributionCalendar.weeks[]
+                | {start: .firstDay, count: ([.contributionDays[].contributionCount] | add)}]
+            }' > data/activity.json
+
+      - name: Commit if changed
+        run: |
+          git diff --quiet data/activity.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Refresh activity data"
+          git push
