@@ -179,16 +179,20 @@ LIMIT 20;</code></pre>
 				</div>
 			</div>
 			<div class="lab-panel" role="tabpanel" id="panel-migrate" aria-labelledby="tab-migrate" hidden>
-				<p class="lab-intro">Moving 120,000 records from a legacy system to a new database, in batches of 10,000, without losing one. Run it and watch a batch fail and recover.</p>
+				<p class="lab-intro">Your turn. Move 1.2 million orders from a legacy MySQL 5.6 database to PostgreSQL while the shop keeps taking orders. The goal: zero lost or corrupted records and under one minute of downtime. You have five calls to make.</p>
 				<div class="mg" id="migration-demo">
-					<button class="btn" type="button" id="mg-run">Run migration</button>
-					<ol class="mg-batches" id="mg-batches" aria-hidden="true"></ol>
+					<ol class="mg-progress" id="mg-progress" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
+					<p class="mg-count" id="mg-count"></p>
+					<h3 class="mg-question" id="mg-question"></h3>
+					<p class="mg-context" id="mg-context"></p>
+					<div class="mg-options" id="mg-options"></div>
+					<p class="mg-outcome" id="mg-outcome" aria-live="polite"></p>
+					<button class="btn" type="button" id="mg-next" hidden>Next</button>
 					<dl class="fo-stats">
-						<div><dt>Records copied</dt><dd id="mg-copied">0</dd></div>
-						<div><dt>Retries</dt><dd id="mg-retries">0</dd></div>
-						<div><dt>Records lost</dt><dd id="mg-lost">–</dd></div>
+						<div><dt>Records lost or corrupted</dt><dd id="mg-lost">0</dd></div>
+						<div><dt>Downtime</dt><dd id="mg-down">0 s</dd></div>
+						<div><dt>Time taken</dt><dd id="mg-time">0 min</dd></div>
 					</dl>
-					<ol class="fo-log" id="mg-log" aria-live="polite"><li>Ready. Source has 120,000 records.</li></ol>
 				</div>
 			</div>
 		</section>
