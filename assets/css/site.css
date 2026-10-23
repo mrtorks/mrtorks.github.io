@@ -494,3 +494,33 @@ img, svg { max-width: 100%; height: auto; }
 	color: var(--muted);
 	font-size: var(--step--1);
 }
+
+/* Working with me page */
+.guide {
+	max-width: 44rem;
+	padding-top: var(--space-6);
+	padding-bottom: var(--space-9);
+}
+
+.guide-head h1 { font-size: clamp(2.5rem, 9vw, var(--step-4)); }
+
+.guide-head p {
+	margin-top: var(--space-4);
+	color: var(--muted);
+	font-size: var(--step-1);
+	line-height: 1.45;
+}
+
+.guide section {
+	margin-top: var(--space-7);
+	padding-top: var(--space-5);
+	border-top: 1px solid var(--line);
+}
+
+.guide h2 { font-size: var(--step-2); margin-bottom: var(--space-3); }
+
+.guide ul { margin: 0; padding-left: 1.2em; max-width: var(--measure); }
+
+.guide li + li { margin-top: var(--space-2); }
+
+.guide .hero-actions { margin-top: var(--space-8); }
