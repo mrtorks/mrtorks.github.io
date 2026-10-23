@@ -825,3 +825,49 @@ img, svg { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: no-preference) {
 	.qp-bar span { transition: width 0.6s ease; }
 }
+
+/* Migration replay demo (driven by migration.js); reuses the failover stats and log styles */
+.mg {
+	display: grid;
+	gap: var(--space-5);
+	justify-items: start;
+	margin-top: var(--space-5);
+	padding: var(--space-5);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--surface);
+}
+
+.mg .btn:disabled { opacity: 0.6; cursor: default; }
+
+.mg-batches {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: var(--space-2);
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@media (min-width: 40rem) {
+	.mg-batches { grid-template-columns: repeat(12, 1fr); }
+}
+
+.mg-batches li {
+	height: 2.25rem;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	background: var(--bg);
+}
+
+.mg-batches .is-copying { border-color: var(--accent); background: color-mix(in oklab, var(--accent) 35%, var(--bg)); }
+.mg-batches .is-done { border-color: var(--accent-2); background: var(--accent-2); }
+.mg-batches .is-failed { border-color: oklch(62% 0.16 30); background: oklch(62% 0.16 30); }
+.mg-batches .is-retrying { border-color: oklch(75% 0.12 85); background: color-mix(in oklab, oklch(75% 0.12 85) 45%, var(--bg)); }
+
+.mg .fo-log { width: 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+	.mg-batches li { transition: background-color 0.25s ease, border-color 0.25s ease; }
+}
