@@ -81,6 +81,11 @@
 			marker.hidden = true;
 			caption.textContent = summary;
 		});
+	var heroTitle = document.getElementById('hero-title');
+	if (header && heroTitle && window.IntersectionObserver) {
+		new IntersectionObserver(function (entries) {
+			header.classList.toggle('hide-brand', entries[0].isIntersecting);
+		}).observe(heroTitle);
 	}
 
 	var year = document.getElementById('currentYear');
