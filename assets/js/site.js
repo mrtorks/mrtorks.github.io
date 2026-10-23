@@ -115,6 +115,21 @@
 		print.addEventListener('click', function () { window.print(); });
 	}
 
-	var year = document.getElementById('currentYear');
+	// Show the latest Lighthouse scores, saved after each deploy (see data/lighthouse.json)
+	var scores = document.getElementById('site-scores');
+	if (scores && window.fetch) {
+		fetch('data/lighthouse.json')
+			.then(function (res) { return res.ok ? res.json() : Promise.reject(); })
+			.then(function (data) {
+				var s = data.scores;
+				scores.textContent = 'Lighthouse: ' + s.performance + ' performance · ' + s.accessibility +
+					' accessibility · ' + s['best-practices'] + ' best practices · ' + s.seo + ' SEO';
+				scores.title = 'Checked ' + new Date(data.checked).toLocaleDateString();
+				scores.hidden = false;
+			})
+			.catch(function () {});
+	}
+
+		var year = document.getElementById('currentYear');
 	if (year) year.textContent = new Date().getFullYear();
 })();
