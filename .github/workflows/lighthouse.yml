@@ -24,17 +24,21 @@ jobs:
         with:
           ref: main
 
+      # Shared runners are noisy, so audit three times and keep each category's median
       - name: Run Lighthouse
         run: |
-          npx -y lighthouse@12 "https://${{ github.repository_owner }}.github.io/" --quiet \
-            --output=json --output-path=lh.json \
-            --only-categories=performance,accessibility,best-practices,seo \
-            --chrome-flags="--headless=new --no-sandbox"
-          jq '{checked: (now | todate), scores: {
-            performance: (.categories.performance.score * 100 | round),
-            accessibility: (.categories.accessibility.score * 100 | round),
-            "best-practices": (.categories["best-practices"].score * 100 | round),
-            seo: (.categories.seo.score * 100 | round)}}' lh.json > data/lighthouse.json
+          for i in 1 2 3; do
+            npx -y lighthouse@12 "https://${{ github.repository_owner }}.github.io/" --quiet \
+              --output=json --output-path=lh-$i.json \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --chrome-flags="--headless=new --no-sandbox"
+          done
+          jq -s 'def median(c): [.[].categories[c].score * 100 | round] | sort | .[1];
+            {checked: (now | todate), scores: {
+              performance: median("performance"),
+              accessibility: median("accessibility"),
+              "best-practices": median("best-practices"),
+              seo: median("seo")}}' lh-1.json lh-2.json lh-3.json > data/lighthouse.json
 
       - name: Commit if scores changed
         run: |
