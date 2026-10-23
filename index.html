@@ -97,33 +97,59 @@
 			</ol>
 		</section>
 
-		<section class="failover container" id="failover" aria-labelledby="failover-title">
+		<section class="lab container" id="lab" aria-labelledby="lab-title">
 			<header class="section-head">
-				<h2 id="failover-title">Try to break it</h2>
-				<p>A small model of the kind of system I run. Click a server to take it down, then watch health checks route traffic around it. Each one restarts on its own.</p>
+				<h2 id="lab-title">Try it yourself</h2>
+				<p>Small working models of problems I solve. The numbers are illustrative.</p>
 			</header>
-			<div class="failover-demo" id="failover-demo">
-				<div class="fo-tier">
-					<p class="fo-label">App servers</p>
-					<div class="fo-nodes">
-						<button class="fo-node" type="button" data-node="app-1"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-1</span><span class="fo-state">Serving</span></button>
-						<button class="fo-node" type="button" data-node="app-2"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-2</span><span class="fo-state">Serving</span></button>
-						<button class="fo-node" type="button" data-node="app-3"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-3</span><span class="fo-state">Serving</span></button>
+			<div class="lab-tabs" role="tablist" aria-label="Demos">
+				<button class="lab-tab" type="button" role="tab" id="tab-break" aria-controls="panel-break" aria-selected="true">Break it</button>
+				<button class="lab-tab" type="button" role="tab" id="tab-tune" aria-controls="panel-tune" aria-selected="false" tabindex="-1">Tune it</button>
+			</div>
+			<div class="lab-panel" role="tabpanel" id="panel-break" aria-labelledby="tab-break">
+				<p class="lab-intro">A small model of the kind of system I run. Click a server to take it down, then watch health checks route traffic around it. Each one restarts on its own.</p>
+				<div class="failover-demo" id="failover-demo">
+					<div class="fo-tier">
+						<p class="fo-label">App servers</p>
+						<div class="fo-nodes">
+							<button class="fo-node" type="button" data-node="app-1"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-1</span><span class="fo-state">Serving</span></button>
+							<button class="fo-node" type="button" data-node="app-2"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-2</span><span class="fo-state">Serving</span></button>
+							<button class="fo-node" type="button" data-node="app-3"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">app-3</span><span class="fo-state">Serving</span></button>
+						</div>
 					</div>
-				</div>
-				<div class="fo-tier">
-					<p class="fo-label">Database</p>
-					<div class="fo-nodes">
-						<button class="fo-node" type="button" data-node="db-1"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">db-1</span><span class="fo-state">Primary</span></button>
-						<button class="fo-node" type="button" data-node="db-2"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">db-2</span><span class="fo-state">Replica</span></button>
+					<div class="fo-tier">
+						<p class="fo-label">Database</p>
+						<div class="fo-nodes">
+							<button class="fo-node" type="button" data-node="db-1"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">db-1</span><span class="fo-state">Primary</span></button>
+							<button class="fo-node" type="button" data-node="db-2"><span class="fo-dot" aria-hidden="true"></span><span class="fo-name">db-2</span><span class="fo-state">Replica</span></button>
+						</div>
 					</div>
+					<dl class="fo-stats">
+						<div><dt>Requests served</dt><dd id="fo-served">0</dd></div>
+						<div><dt>Failed</dt><dd id="fo-failed">0</dd></div>
+						<div><dt>Success rate</dt><dd id="fo-rate">100%</dd></div>
+					</dl>
+					<ol class="fo-log" id="fo-log" aria-live="polite"><li>All systems healthy.</li></ol>
 				</div>
-				<dl class="fo-stats">
-					<div><dt>Requests served</dt><dd id="fo-served">0</dd></div>
-					<div><dt>Failed</dt><dd id="fo-failed">0</dd></div>
-					<div><dt>Success rate</dt><dd id="fo-rate">100%</dd></div>
-				</dl>
-				<ol class="fo-log" id="fo-log" aria-live="polite"><li>All systems healthy.</li></ol>
+			</div>
+			<div class="lab-panel" role="tabpanel" id="panel-tune" aria-labelledby="tab-tune" hidden>
+				<p class="lab-intro">A customer's open-orders page took almost two seconds to load. Step through how I'd make the query behind it fast.</p>
+				<div class="qp" id="query-demo">
+					<div class="qp-steps" role="group" aria-label="Steps">
+						<button class="qp-step" type="button" data-step="0" aria-pressed="true">1. No index</button>
+						<button class="qp-step" type="button" data-step="1" aria-pressed="false">2. Index one column</button>
+						<button class="qp-step" type="button" data-step="2" aria-pressed="false">3. Composite index</button>
+					</div>
+					<pre class="qp-code"><code id="qp-sql"></code></pre>
+					<dl class="qp-stats">
+						<div><dt>Query time</dt><dd id="qp-time"></dd></div>
+						<div><dt>Rows read</dt><dd id="qp-rows"></dd></div>
+					</dl>
+					<div class="qp-bar" aria-hidden="true"><span id="qp-bar"></span></div>
+					<p class="qp-label">Query plan</p>
+					<pre class="qp-code qp-plan"><code id="qp-plan"></code></pre>
+					<p class="qp-note" id="qp-note" aria-live="polite"></p>
+				</div>
 			</div>
 		</section>
 
@@ -211,6 +237,7 @@
 	<!-- Scripts -->
 	<script src="assets/js/site.js" defer></script>
 	<script src="assets/js/failover.js" defer></script>
+	<script src="assets/js/query.js" defer></script>
 
 </body>
 </html>
