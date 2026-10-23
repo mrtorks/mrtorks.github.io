@@ -276,6 +276,40 @@ img, svg { max-width: 100%; height: auto; }
 	margin-top: var(--space-6);
 }
 
+.tldr-toggle {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--accent);
+	font: inherit;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+	cursor: pointer;
+}
+
+/* TL;DR mode: the summary that replaces work, demos and about (toggled by site.js) */
+.tldr { padding-bottom: var(--space-9); }
+
+.tldr-list { margin: var(--space-5) 0 0; }
+
+.tldr-list > div {
+	display: grid;
+	gap: var(--space-1) var(--space-6);
+	padding: var(--space-4) 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.tldr-list dt { font-weight: 500; }
+
+.tldr-list dd { margin: 0; color: var(--muted); }
+
+.tldr-list ul { margin: 0; padding-left: 1.2em; }
+
+@media (min-width: 48rem) {
+	.tldr-list > div { grid-template-columns: 12rem 1fr; }
+}
+
 /* The one moment of motion: the tide line draws in once on load */
 @media (prefers-reduced-motion: no-preference) {
 	html { scroll-behavior: smooth; }
