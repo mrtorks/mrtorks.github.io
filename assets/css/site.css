@@ -849,3 +849,67 @@ img, svg { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: no-preference) {
 	.qp-bar span { transition: width 0.6s ease; }
 }
+
+/* Migration demo (driven by migration.js); reuses the failover stats styles */
+.mg {
+	display: grid;
+	gap: var(--space-4);
+	justify-items: start;
+	margin-top: var(--space-5);
+	padding: var(--space-5);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--surface);
+}
+
+.mg-progress {
+	display: flex;
+	gap: var(--space-2);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.mg-progress li {
+	width: 2rem;
+	height: 4px;
+	border-radius: 999px;
+	background: var(--line);
+}
+
+.mg-progress .is-good { background: var(--accent-2); }
+.mg-progress .is-bad { background: oklch(62% 0.16 30); }
+.mg-progress .is-ok { background: oklch(75% 0.12 85); }
+
+.mg-count { color: var(--muted); font-size: var(--step--1); }
+
+.mg-question { font-size: var(--step-1); }
+
+.mg-context { color: var(--muted); }
+
+.mg-options {
+	display: grid;
+	gap: var(--space-2);
+	width: 100%;
+}
+
+.mg-option {
+	padding: var(--space-3) var(--space-4);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	background: var(--bg);
+	color: var(--ink);
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.mg-option:hover:not(:disabled) { border-color: var(--muted); }
+.mg-option:disabled { cursor: default; opacity: 0.55; }
+.mg-option[aria-pressed="true"] { opacity: 1; border-color: var(--accent); }
+
+.mg-outcome:empty { display: none; }
+.mg-outcome { padding-left: var(--space-4); border-left: 2px solid var(--line); }
+.mg-outcome.is-good { border-color: var(--accent-2); }
+.mg-outcome.is-ok { border-color: oklch(75% 0.12 85); }
+.mg-outcome.is-bad { border-color: oklch(62% 0.16 30); }

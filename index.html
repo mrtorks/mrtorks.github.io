@@ -105,6 +105,7 @@
 			<div class="lab-tabs" role="tablist" aria-label="Demos">
 				<button class="lab-tab" type="button" role="tab" id="tab-break" aria-controls="panel-break" aria-selected="true">Break it</button>
 				<button class="lab-tab" type="button" role="tab" id="tab-tune" aria-controls="panel-tune" aria-selected="false" tabindex="-1">Tune it</button>
+				<button class="lab-tab" type="button" role="tab" id="tab-migrate" aria-controls="panel-migrate" aria-selected="false" tabindex="-1">Migrate it</button>
 			</div>
 			<div class="lab-panel" role="tabpanel" id="panel-break" aria-labelledby="tab-break">
 				<p class="lab-intro">A small model of the kind of system I run. Click a server to take it down, then watch health checks route traffic around it. Each one restarts on its own.</p>
@@ -175,6 +176,23 @@ LIMIT 20;</code></pre>
 					<p class="qp-note" id="qp-note" aria-live="polite"></p>
 					<p class="qp-label">Query plan</p>
 					<pre class="qp-code qp-plan"><code id="qp-plan"></code></pre>
+				</div>
+			</div>
+			<div class="lab-panel" role="tabpanel" id="panel-migrate" aria-labelledby="tab-migrate" hidden>
+				<p class="lab-intro">Your turn. Move 1.2 million orders from a legacy MySQL 5.6 database to PostgreSQL while the shop keeps taking orders. The goal: zero lost or corrupted records and under one minute of downtime. You have five calls to make.</p>
+				<div class="mg" id="migration-demo">
+					<ol class="mg-progress" id="mg-progress" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
+					<p class="mg-count" id="mg-count"></p>
+					<h3 class="mg-question" id="mg-question"></h3>
+					<p class="mg-context" id="mg-context"></p>
+					<div class="mg-options" id="mg-options"></div>
+					<p class="mg-outcome" id="mg-outcome" aria-live="polite"></p>
+					<button class="btn" type="button" id="mg-next" hidden>Next</button>
+					<dl class="fo-stats">
+						<div><dt>Records lost or corrupted</dt><dd id="mg-lost">0</dd></div>
+						<div><dt>Downtime</dt><dd id="mg-down">0 s</dd></div>
+						<div><dt>Time taken</dt><dd id="mg-time">0 min</dd></div>
+					</dl>
 				</div>
 			</div>
 		</section>
@@ -265,6 +283,7 @@ LIMIT 20;</code></pre>
 	<script src="assets/js/site.js" defer></script>
 	<script src="assets/js/failover.js" defer></script>
 	<script src="assets/js/query.js" defer></script>
+	<script src="assets/js/migration.js" defer></script>
 
 </body>
 </html>
