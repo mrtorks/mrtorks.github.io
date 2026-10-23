@@ -88,6 +88,25 @@
 		}).observe(heroTitle);
 	}
 
+	// Add days online and the latest commit to the footer status line
+	var status = document.getElementById('site-status');
+	if (status && window.fetch) {
+		fetch('https://api.github.com/repos/mrtorks/mrtorks.github.io/commits/main')
+			.then(function (res) { return res.ok ? res.json() : Promise.reject(); })
+			.then(function (commit) {
+				var day = 86400000;
+				var up = Math.floor((Date.now() - Date.UTC(2021, 7, 9)) / day);
+				var ago = Math.floor((Date.now() - new Date(commit.commit.committer.date)) / day);
+				var link = document.createElement('a');
+				link.href = commit.html_url;
+				link.textContent = commit.sha.slice(0, 7);
+				status.lastChild.textContent = 'Up ' + up.toLocaleString() + ' days · last deployed ' +
+					(ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + ' days ago') + ' · commit ';
+				status.appendChild(link);
+			})
+			.catch(function () {});
+	}
+
 	var year = document.getElementById('currentYear');
 	if (year) year.textContent = new Date().getFullYear();
 })();

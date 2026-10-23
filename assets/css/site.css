@@ -511,3 +511,19 @@ img, svg { max-width: 100%; height: auto; }
 	color: var(--muted);
 	font-size: var(--step--1);
 }
+
+/* Site status: how long the site has been up and its latest commit (filled in by site.js) */
+.site-status {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-variant-numeric: tabular-nums;
+}
+
+.status-dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--accent-2);
+	box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent-2) 25%, transparent);
+}
