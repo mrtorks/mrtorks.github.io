@@ -534,11 +534,12 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 /* Footer */
+/* Two rows: copyright and "Back to top", then the site details (index page only) */
 .footer-inner {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	gap: var(--space-3);
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: baseline;
+	gap: var(--space-3) var(--space-5);
 	padding-top: var(--space-5);
 	padding-bottom: var(--space-6);
 	border-top: 1px solid var(--line);
@@ -546,7 +547,18 @@ img, svg { max-width: 100%; height: auto; }
 	font-size: var(--step--1);
 }
 
-/* Site status: uptime, latest commit and Lighthouse scores (filled in by site.js) */
+.footer-meta {
+	grid-column: 1 / -1;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2) var(--space-6);
+	padding-top: var(--space-3);
+	border-top: 1px dashed var(--line);
+}
+
+.footer-meta p { max-width: none; }
+
+/* Site status: uptime, last deploy and Lighthouse scores (filled in by site.js) */
 .site-status,
 .site-scores {
 	display: flex;
@@ -618,7 +630,7 @@ img, svg { max-width: 100%; height: auto; }
 
 	body { font-size: 10pt; line-height: 1.4; }
 
-	.site-header, .skip-link { display: none; }
+	.site-header, .site-footer, .skip-link { display: none; }
 
 	.resume { max-width: none; padding: 0; }
 	.resume-head h1 { font-size: 20pt; }
