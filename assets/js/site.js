@@ -81,6 +81,8 @@
 			marker.hidden = true;
 			caption.textContent = summary;
 		});
+	}
+
 	var heroTitle = document.getElementById('hero-title');
 	if (header && heroTitle && window.IntersectionObserver) {
 		new IntersectionObserver(function (entries) {
