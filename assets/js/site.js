@@ -102,7 +102,7 @@
 				var link = document.createElement('a');
 				link.href = commit.html_url;
 				link.textContent = commit.sha.slice(0, 7);
-				status.lastChild.textContent = 'Up ' + up.toLocaleString() + ' days · last deployed ' +
+				status.lastChild.textContent = 'Online for ' + up.toLocaleString() + ' days · last deployed ' +
 					(ago === 0 ? 'today' : ago === 1 ? 'yesterday' : ago + ' days ago') + ' · commit ';
 				status.appendChild(link);
 			})
