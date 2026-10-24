@@ -1,0 +1,32 @@
+# Mirrors every branch and tag to gitlab.com/mrtorks/mrtorks.gitlab.io,
+# which serves the GitLab Pages copy of the site.
+# Needs a GITLAB_TOKEN secret: a GitLab token with write_repository.
+name: Mirror to GitLab
+
+on:
+  push:
+  delete:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror-gitlab
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push branches and tags to GitLab
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          git push --prune --force \
+            "https://oauth2:${GITLAB_TOKEN}@gitlab.com/mrtorks/mrtorks.gitlab.io.git" \
+            "refs/remotes/origin/*:refs/heads/*" "^refs/remotes/origin/HEAD" \
+            "refs/tags/*:refs/tags/*"
