@@ -1,0 +1,15 @@
+# Deploys this static site to GitLab Pages.
+# GitLab serves whatever ends up in public/, so copy the site files there.
+pages:
+  image: alpine:latest
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - rm -rf public
+    - mv .public public
+    - rm -rf public/public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
